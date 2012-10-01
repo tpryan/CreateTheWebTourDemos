@@ -1,0 +1,1 @@
+This is a small responsive website that I intend to use for demonstrations of Adobe Edge Code, and Adobe Edge Inspect.
