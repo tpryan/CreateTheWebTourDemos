@@ -1,0 +1,25 @@
+@media screen  and  (min-width: 1000px) {
+	.centered{
+		max-width: 1000px;
+		margin: 0 auto;
+		padding-left: 20px;
+		padding-right: 20px;
+	}
+
+	hr{
+		max-width: 1000px;
+	}
+
+
+	article{
+		header{
+			width: 350px;
+		}
+		.description{
+			width: 600px;
+			p{
+				line-height: 1.8;
+			}
+		}
+	}		
+}

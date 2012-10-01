@@ -1,0 +1,17 @@
+@media screen  and  (min-width: 767px) {
+	article{
+		header{
+			display: inline-block;
+			width: 350px;
+			vertical-align: top;
+		}
+		.description{
+			display: inline-block;
+			width: 400px;
+			p{
+				margin-top: 3px;
+				line-height: 1.4;
+			}
+		}
+	}		
+}

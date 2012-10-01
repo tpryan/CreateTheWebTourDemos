@@ -1,0 +1,27 @@
+@media screen and (max-width: 480px) {
+	body{
+		font-family: "Droid Sans", "Helvetica Neue";
+	}
+	nav{
+		ul{
+			li{
+				font-family: "Droid Sans", "Helvetica Neue";
+			}
+		}
+	}
+
+	h1, h2{
+		font-family: "Droid Sans", "Helvetica Neue";
+		font-weight: bold;
+	}
+
+	article{
+		date{
+			color: #4d74b3;
+			font-size: 2em;
+		}
+		p{
+			line-height: 1.4;
+		}
+	}
+}
