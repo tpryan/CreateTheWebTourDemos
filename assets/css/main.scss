@@ -1,5 +1,5 @@
 body{
-	font-family: "source-sans-pro", "SourceSansPro-Light";
+	font-family: "SourceSansPro-Light";
 	font-weight: 300;
 	padding: 0;
 	margin: 0;
@@ -21,11 +21,6 @@ body > h2{
 	color: #AAA;
 }
 
-#Stage{
-	border: 3px solid #666;
-	float: right;
-	margin-left: 10px;
-}
 
 
 hr{
@@ -46,12 +41,18 @@ body > header{
 
 	h1{
 		display: inline-block;
-		padding-right: 20px;
+		text-shadow: 2px 2px 2px #000000;
+		color: #FFFFFF;
+		text-transform: uppercase;
+		font-size: 3em;
+		margin: 0;
 	}
 	p{
-		display: inline-block;
+		font-size: 1.5em;
 	}
 
+	background-image: url("banner.png");
+	border-bottom: 5px solid #999;
 
 }
 body > header:before {
@@ -66,24 +67,14 @@ body > header:before {
 }
 
 nav{
-	background: #4d74b3 center top no-repeat; 
-	background-image:  -webkit-gradient(linear, center top, center bottom, from(#4d74b3), to(#5784cb));
-	background-image:  -webkit-linear-gradient(top, #4d74b3, #5784cb);
-	background-image:  -moz-linear-gradient(top, #4d74b3, #5784cb);
-	background-image:  -o-linear-gradient(top, #4d74b3, #5784cb);
-	background-image:  -ms-linear-gradient(top, #4d74b3, #5784cb);
-	background-image:  linear-gradient(to bottom, #4d74b3, #5784cb);
-	width: 100%;
-	padding-top: 25px;
-	padding-bottom: 25px;
 	
 	ul{
-
-		@extend .centered;
+		padding-left: 0;
+		margin-left: 0;
 		list-style: none;
 		li{
-			font-family: "source-sans-pro", "SourceSansPro-Regular";
-			font-weight: 400;
+			font-family: "SourceSansPro-Regular";
+			font-weight: normal;
 			display: inline-block;
 			font-size: 1.5em;
 			padding-right: 30px;
@@ -98,8 +89,8 @@ nav{
 
 
 h1, h2{
-	font-family: "source-sans-pro", "SourceSansPro-Semibold";
-	font-weight: 600;
+	font-family: "SourceSansPro-Semibold";
+	font-weight: normal;
 	//color: #FF0000;
 }
 
@@ -121,16 +112,39 @@ article{
 	
 	h1{
 		margin: 0;
+		font-size: 1.7em;
+		display: inline-block;
+		vertical-align: top;
+		padding-top: 0;
+		width: 13.5em;
+		a{
+			padding: 0;
+			margin: 0;
+			vertical-align: top;
+		}
+	}
+	h1:before{
+		content: url("location.png");
+		padding-right: .2em;
 	}
 
-	date{
+	time{
 		color: #AAA;
-		font-size: 1.8em;
+		font-size: 1.5em;
+		display: inline-block;
+		width: 6.5em;
+		vertical-align: top;
 
+	}
+	time:before{
+		content: url("calendar.png");
+		padding-right: .2em;
 	}
 	.speaker{
 		margin: 0;
 		font-size: 1.3em;
+		display: inline-block;
+		vertical-align: middle;
 	}
 
 	p{
@@ -139,19 +153,15 @@ article{
 }
 
 footer {
-	background: #4d74b3 center top no-repeat; 
-	background-image:  -webkit-gradient(linear, center top, center bottom, from(#4d74b3), to(#5784cb));
-	background-image:  -webkit-linear-gradient(top, #4d74b3, #5784cb);
-	background-image:  -moz-linear-gradient(top, #4d74b3, #5784cb);
-	background-image:  -o-linear-gradient(top, #4d74b3, #5784cb);
-	background-image:  -ms-linear-gradient(top, #4d74b3, #5784cb);
-	background-image:  linear-gradient(to bottom, #4d74b3, #5784cb);
+	@extend .centered;
+	background-image: url("banner.png");
+	border-top: 5px solid #999;
 	width: 100%;
 	padding-top: 25px;
 	padding-bottom: 25px;
 	
 	div{
-		@extend .centered;
+		
 		p{
 			display: inline-block;
 			margin-right: 70px;

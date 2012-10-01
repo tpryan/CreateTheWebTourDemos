@@ -1,17 +1,17 @@
 @media screen  and  (min-width: 767px) {
 	article{
-		header{
-			display: inline-block;
-			width: 350px;
-			vertical-align: top;
+		h1{
+			font-size: 1.3em;
+			width: 10.5em;
 		}
-		.description{
-			display: inline-block;
-			width: 400px;
-			p{
-				margin-top: 3px;
-				line-height: 1.4;
-			}
+		time{
+			font-size: 1.2em;
+			width: 6.5em;
+
+		}
+
+		.speaker{
+			font-size: 1.1em;
 		}
 	}		
 }
