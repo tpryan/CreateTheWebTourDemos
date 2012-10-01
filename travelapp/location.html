@@ -1,0 +1,83 @@
+<html>
+  <head>
+    <title>Travel Shims</title>
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/bootstrap-responsive.min.css" rel="stylesheet">
+    <script src="js/jquery-1.8.2.min.js"></script>
+    <script src="js/travelapp.js"></script>
+
+    <script type="text/javascript">
+    $(document).ready(function(){
+      getLocation();
+    });
+
+    function getLocation() {
+      var position = {};
+      var coords = {};
+      var location = getHomeLocation();
+      console.log("Location:", location);
+      coords.latitude = Number(location.lat) + 1;
+      coords.longitude = Number(location.lon) + 1;
+      console.log("Coords:", coords);
+      position.coords = coords;
+      getLocationSuccess(position);
+    }
+
+    function getLocationSuccess(position) {
+      $("#lat").html(position.coords.latitude);
+      $("#lon").html(position.coords.longitude);
+      doReverseLookup(position);
+    }
+
+    function doReverseLookup(position) {
+      var latlon = position.coords.latitude + "," + position.coords.longitude;
+
+      $.ajax({
+          url: "https://maps.googleapis.com/maps/api/geocode/json?sensor=false&latlng=" + latlon,
+          success: doReverseLookupSuccess
+        });
+    }
+
+    function doReverseLookupSuccess(response) {
+      console.log(response);
+      for (addressItem in response.results) {
+        addressObj = response.results[addressItem];
+        console.log(addressObj);
+        if (addressObj.geometry.location_type === "APPROXIMATE") {
+          $("#address").html(addressObj.formatted_address);
+          break;
+        }
+      }
+
+    }
+
+    </script>
+
+  </head>
+  <body id="pagelist">
+
+    <div class="navbar navbar-fixed-top navbar-inverse">
+      <div class="navbar-inner">
+        <a class="brand" href="./index.html">Travel Shims</a>
+      </div>
+    </div>
+
+    <ul class="breadcrumb">
+      <li><a href="index.html">Main</a> <span class="divider">/</span></li>
+      <li class="active">Where Am I?</li>
+    </ul>
+    <table class="table">
+      <tr><td colspan="2">Your device says you are at:</td></tr>
+      <tr><td><strong>Latitude:</strong></td><td id="lat"></td></tr>
+      <tr><td><strong>Longitude:</strong></td><td id="lon"></td></tr>
+      <tr><td colspan="2">&nbsp;</td></tr>
+      <tr><td colspan="2">Google says this place is: <br /></td></tr>
+      <tr><td><strong>Approximate: &nbsp;</strong></td><td id="address"></td></tr>
+    </table> 
+
+  </body>
+ 
+  <script src="js/bootstrap.min.js"></script>
+  </body>
+</html>

@@ -1,0 +1,110 @@
+<html>
+  <head>
+    <title>Travel Shims</title>
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/bootstrap-responsive.min.css" rel="stylesheet">
+    <script src="js/jquery-1.8.2.min.js"></script>
+    <script src="js/travelapp.js"></script>
+    <script src="js/travelapp.js"></script>
+
+    <script type="text/javascript">
+    $(document).ready(function(){
+      
+
+      var location = getHomeLocation();
+      console.log("Location:", location);
+      $('#lat-home').html(location.lat);
+      $('#lon-home').html(location.lon);
+      getLocation();
+
+
+    });
+
+    function getLocation() {
+      var position = {};
+      var coords = {};
+      var location = getHomeLocation();
+      console.log("Location:", location);
+      coords.latitude = Number(location.lat) + 1;
+      coords.longitude = Number(location.lon) + 1;
+      console.log("Coords:", coords);
+      position.coords = coords;
+      getLocationSuccess(position);
+    }
+
+    function getLocationSuccess(position) {
+      $("#lat-device").html(position.coords.latitude);
+      $("#lon-device").html(position.coords.longitude);
+
+      console.log("lat1:",$("#lat-device").html());
+      console.log("lon1:",$("#lon-device").html());
+      console.log("lat2:",$("#lat-home").html());
+      console.log("lon2:",$("#lon-home").html());
+
+      var distanceKM = calcDistanceBetween($("#lat-device").html(), $("#lon-device").html(),$("#lat-home").html(), $("#lon-home").html());
+      $("#d_km").html(distanceKM);
+
+      var distanceMiles = calcDistanceBetween($("#lat-device").html(), $("#lon-device").html(),$("#lat-home").html(), $("#lon-home").html(), "miles");
+      $("#d_miles").html(distanceMiles);
+
+    }
+
+    function calcDistanceBetween(lat1, lon1, lat2, lon2, units) {
+      if (typeof(units) == "undefined") units = "km";
+
+      var R = 6371; // Radius of earth in km 
+      if (units == "miles"){
+        R = 3958.7558657440545; // Radius of earth in miles 
+      }
+
+      //Radius of the earth in:  3958.7558657440545 miles,  6371 km  | var R = (6371 / 1.609344);
+      
+      var dLat = toRad(lat2-lat1);
+      var dLon = toRad(lon2-lon1); 
+      var a = Math.sin(dLat/2) * Math.sin(dLat/2) +
+              Math.cos(toRad(lat1)) * Math.cos(toRad(lat2)) * 
+              Math.sin(dLon/2) * Math.sin(dLon/2); 
+      var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)); 
+      var d = R * c;
+      return d;
+  }
+
+  function toRad(Value) {
+      /** Converts numeric degrees to radians */
+      return Value * Math.PI / 180;
+  }
+
+    </script>
+
+  </head>
+  <body id="pagelist">
+
+    <div class="navbar navbar-fixed-top navbar-inverse">
+      <div class="navbar-inner">
+        <a class="brand" href="./index.html">Travel Shims</a>
+      </div>
+    </div>
+
+    <ul class="breadcrumb">
+      <li><a href="index.html">Main</a> <span class="divider">/</span></li>
+      <li class="active">Where Am I?</li>
+    </ul>
+    <table class="table">
+      <tr><td colspan="2">Your device says you are at:</td></tr>
+      <tr><td><strong>Latitude:</strong></td><td id="lat-device"></td></tr>
+      <tr><td><strong>Longitude:</strong></td><td id="lon-device"></td></tr>
+      <tr><td colspan="2">&nbsp;</td></tr>
+      <tr><td colspan="2">Your home is: <br /></td></tr>
+      <tr><td><strong>Latitude:</strong></td><td id="lat-home"></td></tr>
+      <tr><td><strong>Longitude:</strong></td><td id="lon-home"></td></tr>
+      <tr><td colspan="2">&nbsp;</td></tr>
+      <tr><td>km from home</td><td id="d_km"></td></tr>
+      <tr><td>miles from home</td><td id="d_miles"></td></tr>
+    </table> 
+
+  </body>
+ 
+  <script src="js/bootstrap.min.js"></script>
+  </body>
+</html>

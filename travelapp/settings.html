@@ -1,0 +1,62 @@
+<html>
+  <head>
+    <title>Travel Shims</title>
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/bootstrap-responsive.min.css" rel="stylesheet">
+    <script src="js/jquery-1.8.2.min.js"></script>
+    <script src="js/travelapp.js"></script>
+
+    <script type="text/javascript">
+    $(document).ready(function(){
+      var location = getHomeLocation();
+      $('#lat').val(location.lat);
+      $('#lon').val(location.lon);
+
+      $("#save").click(storeHomeLocation);
+
+
+    });
+
+    function storeHomeLocation(e) {
+      e.preventDefault();
+
+      var lat = $('#lat').val();
+      var lon = $('#lon').val();
+      console.log("coordinates:", lat,lon);
+      localStorage.setItem('lat', lat);
+      localStorage.setItem('lon', lon);
+    }
+
+
+
+
+    </script>
+
+  </head>
+  <body id="pagelist">
+
+    <div class="navbar navbar-fixed-top navbar-inverse">
+      <div class="navbar-inner">
+        <a class="brand" href="./index.html">Travel Shims</a>
+      </div>
+    </div>
+
+    <ul class="breadcrumb">
+      <li><a href="index.html">Main</a> <span class="divider">/</span></li>
+      <li class="active">Settings</li>
+    </ul>
+
+    <form>
+      <legend>Home Location</legend>
+      <input name="lat" id="lat" type="text" placeholder="Latitude" class="input-xlarge">
+      <input name="lon" id="lon" type="text" placeholder="Longitude" class="input-xlarge">
+      <br />
+      <button id="save" class="btn btn-primary btn-large" type="submit" class="btn">Save</button>
+    </form>
+
+  </body>
+ 
+  <script src="js/bootstrap.min.js"></script>
+  </body>
+</html>
