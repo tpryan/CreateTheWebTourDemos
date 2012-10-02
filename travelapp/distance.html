@@ -43,10 +43,10 @@
       console.log("lon2:",$("#lon-home").html());
 
       var distanceKM = calcDistanceBetween($("#lat-device").html(), $("#lon-device").html(),$("#lat-home").html(), $("#lon-home").html());
-      $("#d_km").html(distanceKM);
+      $("#d_km").html(Math.round(distanceKM));
 
       var distanceMiles = calcDistanceBetween($("#lat-device").html(), $("#lon-device").html(),$("#lat-home").html(), $("#lon-home").html(), "miles");
-      $("#d_miles").html(distanceMiles);
+      $("#d_miles").html(Math.round(distanceMiles));
 
     }
 
@@ -83,12 +83,16 @@
     <div class="navbar navbar-fixed-top navbar-inverse">
       <div class="navbar-inner">
         <a class="brand" href="./index.html">Travel Shims</a>
+        <a class="btn pull-right" href="settings.html">
+          <i class="icon-cog"></i> 
+          <span class="listtext">Settings</span>
+        </a>
       </div>
     </div>
 
     <ul class="breadcrumb">
       <li><a href="index.html">Main</a> <span class="divider">/</span></li>
-      <li class="active">Where Am I?</li>
+      <li class="active">How far from home am I?</li>
     </ul>
     <table class="table">
       <tr><td colspan="2">Your device says you are at:</td></tr>
