@@ -2,11 +2,15 @@ body {
   font-family: "SourceSansPro-Light";
   font-weight: 300;
   padding: 0;
-  margin: 0; }
+  margin: 0;
+  background-image: url("bg.png");
+  background-size: 100% 100%; }
 
 .centered, body > h2, body > header, section, footer {
   max-width: 760px;
   margin: 0 auto;
+  border-left: 1px solid #999;
+  border-right: 1px solid #999;
   padding-left: 20px;
   padding-right: 20px; }
 
@@ -27,6 +31,7 @@ hr {
 body > header {
   padding-top: 1px;
   position: relative;
+  margin-bottom: 0;
   background-image: url("banner.png");
   border-bottom: 5px solid #999; }
   body > header h1 {
@@ -45,6 +50,11 @@ body > header:before {
   margin: -1px 20px 0 0; }
   body > header:before h1 {
     margin: 0; }
+
+#content {
+  background-color: #FFFFFF;
+  margin-top: 0;
+  margin-bottom: 0; }
 
 nav ul {
   padding-left: 0;
@@ -72,8 +82,8 @@ a:hover {
 
 article {
   font-size: 1.2em;
-  margin-top: 10px;
-  margin-bottom: 30px; }
+  padding-top: 10px;
+  padding-bottom: 30px; }
   article h1 {
     margin: 0;
     font-size: 1.7em;
@@ -85,7 +95,7 @@ article {
       padding: 0;
       margin: 0;
       vertical-align: top; }
-  article h1:before {
+  article .city:before {
     content: url("location.png");
     padding-right: .2em; }
   article time {
@@ -160,6 +170,8 @@ footer {
   article h1, article time, article p {
     display: block; }
   article h1:before, article time:before {
+    content: none; }
+  article .city:before {
     content: none; } }
 @media screen and (max-width: 480px) {
   nav ul li {
