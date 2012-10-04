@@ -4,6 +4,7 @@
     <!-- Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/bootstrap-responsive.min.css" rel="stylesheet">
+    <script type="text/javascript" charset="utf-8" src="cordova-2.0.0.js"></script>
     <script src="js/jquery-1.8.2.min.js"></script>
     <script src="js/travelapp.js"></script>
 
@@ -40,6 +41,10 @@
       <div class="navbar-inner">
         <a class="brand" href="./index.html">Travel Shims</a>
       </div>
+      <a class="btn pull-right" href="about.html">
+        <i class="icon-info-sign"></i> 
+        <span class="listtext">About</span>
+      </a>
     </div>
 
     <ul class="breadcrumb">
@@ -49,8 +54,8 @@
 
     <form>
       <legend>Home Location</legend>
-      <input name="lat" id="lat" type="text" placeholder="Latitude" class="input-xlarge">
-      <input name="lon" id="lon" type="text" placeholder="Longitude" class="input-xlarge">
+      <input name="lat" id="lat" type="number" placeholder="Latitude" class="input-xlarge">
+      <input name="lon" id="lon" type="number" placeholder="Longitude" class="input-xlarge">
       <br />
       <button id="save" class="btn btn-primary btn-large" type="submit" class="btn">Save</button>
     </form>

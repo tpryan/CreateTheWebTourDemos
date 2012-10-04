@@ -1,5 +1,44 @@
+/* Regular */
+@font-face {
+    font-family: 'ssp_light';
+    src: url('fonts/sourcesanspro-light-webfont.eot');
+    src: url('fonts/sourcesanspro-light-webfont.eot?#iefix') format('embedded-opentype'),
+         url('fonts/sourcesanspro-light-webfont.woff') format('woff'),
+         url('fonts/sourcesanspro-light-webfont.ttf') format('truetype'),
+         url('fonts/sourcesanspro-light-webfont.svg#ssp_light') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+/* Regular */
+@font-face {
+    font-family: 'ssp_regular';
+    src: url('fonts/sourcesans-regular-webfont.eot');
+    src: url('fonts/sourcesans-regular-webfont.eot?#iefix') format('embedded-opentype'),
+         url('fonts/sourcesans-regular-webfont.woff') format('woff'),
+         url('fonts/sourcesans-regular-webfont.ttf') format('truetype'),
+         url('fonts/sourcesans-regular-webfont.svg#ssp_regular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+/* Regular */
+@font-face {
+    font-family: 'ssp_semibold';
+    src: url('fonts/sourcesanspro-semibold-webfont.eot');
+    src: url('fonts/sourcesanspro-semibold-webfont.eot?#iefix') format('embedded-opentype'),
+         url('fonts/sourcesanspro-semibold-webfont.woff') format('woff'),
+         url('fonts/sourcesanspro-semibold-webfont.ttf') format('truetype'),
+         url('fonts/sourcesanspro-semibold-webfont.svg#ssp_semibold') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
 body{
-	font-family: "SourceSansPro-Light";
+	font-family: "ssp_light";
 	font-weight: 300;
 	padding: 0;
 	margin: 0;
@@ -82,7 +121,7 @@ nav{
 		margin-left: 0;
 		list-style: none;
 		li{
-			font-family: "SourceSansPro-Regular";
+			font-family: "ssp_regular";
 			font-weight: normal;
 			display: inline-block;
 			font-size: 1.5em;
@@ -98,7 +137,7 @@ nav{
 
 
 h1, h2{
-	font-family: "SourceSansPro-Semibold";
+	font-family: "ssp_semibold";
 	font-weight: normal;
 	//color: #FF0000;
 }
