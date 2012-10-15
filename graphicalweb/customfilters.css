@@ -1,0 +1,73 @@
+
+
+
+/* This is the animation code. */
+@-webkit-keyframes disolve-in {
+   	0% {
+		-webkit-filter: custom(url(shaders/vertex/dissolve.vs) mix(url(shaders/fragment/dissolve.fs) multiply source-atop), 50 50 border-box, transform perspective(1000) scale(1) rotateX(0deg) rotateY(0deg) rotateZ(0deg), amount 1);
+	}
+	50% {
+		-webkit-filter: custom(url(shaders/vertex/dissolve.vs) mix(url(shaders/fragment/dissolve.fs) multiply source-atop), 50 50 border-box, transform perspective(1000) scale(1) rotateX(0deg) rotateY(0deg) rotateZ(0deg), amount 1);
+	}
+	100% {
+		-webkit-filter: custom(url(shaders/vertex/dissolve.vs) mix(url(shaders/fragment/dissolve.fs) multiply source-atop), 50 50 border-box, transform perspective(1000) scale(1) rotateX(0deg) rotateY(0deg) rotateZ(0deg), amount 0);
+	}
+}
+
+@-webkit-keyframes explode-in {
+   	0% {
+		-webkit-filter: custom(url(shaders/vertex/tile-explosion.vs) mix(url(shaders/fragment/tile-explosion.fs) normal source-atop), 76 100 border-box detached, transform perspective(1000) scale(1) rotateX(0deg) rotateY(0deg) rotateZ(0deg), tileTransform perspective(1000) scale(1) rotateX(0deg) rotateY(0deg) rotateZ(0deg), explosiveness 2.9, tileRotation 0 0 0, center 0.5 0.5, t 0.5, fade 0.8);
+	}
+	50% {
+		-webkit-filter: custom(url(shaders/vertex/tile-explosion.vs) mix(url(shaders/fragment/tile-explosion.fs) normal source-atop), 76 100 border-box detached, transform perspective(1000) scale(1) rotateX(0deg) rotateY(0deg) rotateZ(0deg), tileTransform perspective(1000) scale(1) rotateX(0deg) rotateY(0deg) rotateZ(0deg), explosiveness 2.9, tileRotation 0 0 0, center 0.5 0.5, t 0.5, fade 0.8);
+	}
+	100% {
+		-webkit-filter: custom(url(shaders/vertex/tile-explosion.vs) mix(url(shaders/fragment/tile-explosion.fs) normal source-atop), 76 100 border-box detached, transform perspective(1000) scale(1) rotateX(0deg) rotateY(0deg) rotateZ(0deg), tileTransform perspective(1000) scale(1) rotateX(0deg) rotateY(0deg) rotateZ(0deg), explosiveness 1.5, tileRotation 0 0 0, center 0.5 0.5, t 0, fade 0.8);
+	}
+}
+
+@-webkit-keyframes tile-in {
+   	0% {
+		-webkit-filter: custom(url(shaders/vertex/tile-flip.vs) mix(url(shaders/fragment/tile-flip.fs) multiply source-atop), 25 32 border-box detached, transform perspective(1000) scale(1) rotateX(0deg) rotateY(0deg) rotateZ(0deg), amount 1, randomness 2, flipAxis 0 1 0, tileOutline 1);
+	}
+	50% {
+		-webkit-filter: custom(url(shaders/vertex/tile-explosion.vs) mix(url(shaders/fragment/tile-explosion.fs) normal source-atop), 76 100 border-box detached, transform perspective(1000) scale(1) rotateX(0deg) rotateY(0deg) rotateZ(0deg), tileTransform perspective(1000) scale(1) rotateX(0deg) rotateY(0deg) rotateZ(0deg), explosiveness 2.9, tileRotation 0 0 0, center 0.5 0.5, t 0.5, fade 0.8);
+	}
+	100% {
+		-webkit-filter: custom(url(shaders/vertex/tile-flip.vs) mix(url(shaders/fragment/tile-flip.fs) multiply source-atop), 25 32 border-box detached, transform perspective(1000) scale(1) rotateX(0deg) rotateY(0deg) rotateZ(0deg), amount 0, randomness 2, flipAxis 0 1 0, tileOutline 1);
+	}
+}
+
+#badge{
+	-webkit-animation-name: disolve-in;
+   	-webkit-animation-duration: 2s;
+   	-webkit-animation-timing-function: ease; /* ease is the default */
+   	-webkit-animation-iteration-count: 1;    /* 1 is the default */
+   	-webkit-animation-direction: normal;  /* normal is the default */
+}
+
+#badge .location{
+	-webkit-animation-name: disolve-in;
+   	-webkit-animation-duration: 4s;
+   	-webkit-animation-timing-function: ease; /* ease is the default */
+   	-webkit-animation-iteration-count: 1;    /* 1 is the default */
+   	-webkit-animation-direction: normal;  /* normal is the default */
+}
+
+#badge hgroup{
+	overflow: visible;
+	-webkit-animation-name: explode-in;
+   	-webkit-animation-duration: 4s;
+   	-webkit-animation-timing-function: ease; /* ease is the default */
+   	-webkit-animation-iteration-count: 1;    /* 1 is the default */
+   	-webkit-animation-direction: normal;  /* normal is the default */
+}
+
+#badge p{
+	overflow: visible;
+	-webkit-animation-name: explode-in;
+   	-webkit-animation-duration: 4s;
+   	-webkit-animation-timing-function: ease; /* ease is the default */
+   	-webkit-animation-iteration-count: 1;    /* 1 is the default */
+   	-webkit-animation-direction: normal;  /* normal is the default */
+}
