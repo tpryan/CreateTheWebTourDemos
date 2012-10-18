@@ -8,3 +8,9 @@ assets/css/.DS_Store
 .DS_Store
 
 build.properties
+
+cssstandards/css-regions/Google Chrome Canary
+
+cssstandards/css-customfilters/Google Chrome Canary
+
+cssstandards/css-exclusions/Google Chrome Canary

@@ -1,0 +1,1 @@
+This demo works with Publicly available version of Canary. 

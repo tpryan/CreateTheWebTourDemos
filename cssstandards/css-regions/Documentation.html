@@ -1,0 +1,330 @@
+<!--
+ADOBE SYSTEMS INCORPORATED
+Copyright 2011 Adobe Systems Incorporated
+All Rights Reserved.
+ 
+NOTICE:  Adobe permits you to use, modify, and distribute this file in accordance with the
+terms of the Adobe license agreement accompanying it.  If you have received this file from a
+source other than Adobe, then your use, modification, or distribution of it requires the prior
+written permission of Adobe.
+-->
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>CSS Regions - Documentation</title>
+	<meta charset="UTF-8">
+	<style type="text/css">
+
+    body{
+        margin: 0;
+        font-size: 1.2em;
+        font-family: Palatino, Georgia, serif;
+    }
+
+    h1{
+        color: white;
+        margin: 0;
+        padding-right: 60px;
+        text-shadow: rgba(0, 0, 0, 0.347656) 0px 1px 2px;
+    }
+
+    h1 em{
+        display: block;
+        font: 0.55em / 1.5em normal;
+        color: #ccc;
+    }
+
+    h2{
+        margin: 60px 0 20px;
+        letter-spacing: -1px;
+    }
+
+    p{
+        color: #333;
+        line-height: 1.4em;
+    }
+
+    a{
+        color: purple;
+    }
+
+    a:hover{
+        color: black;
+    }
+
+    a:visited{
+        color: #8560A8;
+    }
+
+    header{
+        background: #6F518F;
+    }
+
+    header .logo{
+        height: 62px;
+        width: 38px;
+        display: block;
+        position: absolute;
+        top: -1px;
+        right: 32px;
+        line-height: 200px;
+        overflow: hidden;
+        background: url("http://adobe.github.com/web-platform-assets/images/adobe_small_logo.gif") top left no-repeat;
+        box-shadow: 0 2px 2px rgba(0, 0, 0, .35);
+    }
+
+    header .logo:hover{
+        top: 0px;
+    }
+
+    .wrapper{
+        width: 90%;
+        margin: 0 auto;
+        padding: 25px 0;
+    }
+
+    header + .wrapper{
+        padding: 0 0 50px;
+
+    }
+
+    code{
+        background: #eee;
+        border: 1px solid #d7d7d7;
+        padding: 0 3px;
+    }
+
+    pre em{
+		font-style:normal;
+		font-weight:bold;
+        color:#ff2705;
+    }
+    #check_support.false{
+        background: #ffc;
+        border: 1px solid yellow;
+        padding: 10px 20px;
+    }
+
+    .demos{
+        padding: 0;
+        list-style: none;
+    }
+
+    .demos li{
+        padding: 0 0 5px;
+        margin: 0 0 20px;
+    }
+    .demos li.divider{ 
+        font-weight: bold;
+        font-size: 1.1em;
+        list-style: none;
+    }
+    .demos li .build-note{
+        font-weight: 100;
+        font-size: 0.9em;
+        font-style: italic;
+    }
+    .demos li:last-child{
+        border: none;
+        margin: 0;
+    }
+
+    dl > dt.divider {
+    	font-weight: bold;
+    	font-style: italic;
+    }
+
+    @media all and (min-width: 640px){
+         .wrapper{
+             padding: 50px 0;
+             width: 600px;
+         }
+
+         header .logo{
+             right: 52px;
+         }
+    }
+     
+    pre.example {
+		background-color: 
+		rgba(0, 0, 0, 0.04);
+		padding: 0.75em;
+		margin: 1em 0;
+		border-top: thin solid 
+		rgba(0, 0, 0, 0.2);
+		border-bottom: thin solid 
+		rgba(0, 0, 0, 0.2);
+		border-left: none;
+		position: relative;
+		clear: both;
+	}
+	pre.example::before {
+        font-family: Palatino, Georgia, serif;
+		color: gray;
+		background: none;
+		content: "Example";
+		min-width: 7.5em;
+		text-transform: uppercase;
+		font-weight: bold;
+		display: block;
+	}
+
+	div.example::before {
+		color: gray;
+		background: none;
+		border: none;
+		text-transform: none;
+		font-weight: bold;
+		width: 100%;
+		display: block;
+	}
+	</style>
+</head>
+<body>
+	<header>
+        <a href="http://www.adobe.com/" target="_blank" class="logo">Adobe</a>
+	<h1><div class="wrapper">CSS Regions Documentation</div></h1>
+	</header>
+
+
+<!-- 	<ul id="nav">
+		<li>
+			<a href="index.html">Home</a>
+		</li>
+		<li>
+			<a href="index.html#samples_basic">Samples</a>
+		</li>
+		<li>
+			<strong>Documentation</strong>
+		</li>
+	</ul> -->
+	
+	<section class="wrapper">
+	<h2>Contents</h2>
+	<ul id="toc">
+		<li>
+			<a href="#definitions">Definitions and concepts</a>
+		</li>
+		<li>
+			<a href="#flows">Named flows and regions</a>
+			<ul>
+				<li>
+					<a href="#dt_flow">-webkit-flow-into</a>
+				</li>
+				<li>
+					<a href="#dt_content-from">-webkit-flow-from</a>
+				</li>
+			</ul>
+		</li>
+	</ul>
+	
+	<p>This document briefly describes the properties from the 
+		<a href="http://dev.w3.org/csswg/css3-regions/">CSS Regions</a> Specification.</p>
+	
+	<h2 id="definitions">Definitions and concepts</h2>
+	
+	<p>
+		<strong>Named flow:</strong> a set of elements extracted from the normal content flow in order to be displayed in regions. 
+	</p>
+	<p>
+		<strong>Region:</strong> an element that consumes content from a named flow.
+	</p>
+	
+	<h2 id="flows">Named flows and regions</h2>
+	<dl>
+		<dt id="dt_flow" class="divider">-webkit-flow-into: name</dt>
+		<dd>
+			
+			<p>
+				Takes the content of the element out of the normal document flow and moves it into a named flow specified by an identifier.
+			</p>
+			<p>
+				The content will not be rendered unless explicitly consumed by a region with <a href="#dt_content-from"><var>-webkit-flow-from: name</var></a> on the region.
+			</p> 
+		
+<pre class="example">
+&lt;style type=&quot;text/css&quot;&gt;
+    #article{
+        <em>-webkit-flow-into: article-flow;</em>
+    }
+&lt;/style&gt;
+
+&lt;div id=&quot;article&quot;&gt;
+    This content will be associated with <em>article-flow</em>.
+&lt;/div&gt;
+</pre>
+			<p>Multiple flows can be created using different flow names. One flow can consume content from the source of another flow. The content will be subtracted, not duplicated.</p>
+			
+<pre class="example">
+&lt;style type=&quot;text/css&quot;&gt;
+    #article{
+        -webkit-flow-into: article-flow;
+    }
+<em>
+    blockquote{
+        -webkit-flow-into: quotes-flow;
+    }
+</em>
+&lt;/style&gt;
+
+&lt;div id=&quot;article&quot;&gt;
+    This content will be associated with <em>article-flow</em>.
+<em>
+    &lt;blockquote&gt;
+        But this will appear only in quotes-flow.
+    &lt;/blockquote&gt;</em>
+&lt;/div&gt;
+</pre>
+
+		</dd>
+		
+		
+		<dt id="dt_content-from" class="divider">-webkit-flow-from: name</dt>
+		<dd>
+			<p>Inserts content from the <em>name</em> flow into the current element. The element's original content will be replaced by the one from the flow.</p>
+			
+<pre class="example">
+&lt;style type="text/css"&gt;
+    #article{
+        -webkit-flow-into: article-flow;
+    }
+    #region{
+        <em>-webkit-flow-from: article-flow;</em>
+        width:100%;
+    }
+&lt;/style&gt;
+
+&lt;div id="region"&gt;&lt;/div&gt;
+&lt;div id="article"&gt;
+    This content will be associated with <em>article-flow</em>
+    and will replace the region's content, if any.
+&lt;/div&gt;
+</pre>			
+			<p>Multiple elements can consume content from the same flow.</p>
+<pre class="example">
+&lt;style type="text/css"&gt;
+    #article{
+        -webkit-flow-into: article-flow;
+    }
+    #region1,
+    #region2{
+        <em>-webkit-flow-from: article-flow;</em>
+        width:20%;
+        height:4em;
+    }
+&lt;/style&gt;
+
+&lt;div id="region1"&gt;&lt;/div&gt;
+&lt;div id="region2"&gt;&lt;/div&gt;
+&lt;div id="article"&gt;
+    This content will be associated with <em>article-flow</em>
+    and will flow from #region1 to #region2.
+&lt;/div&gt;
+</pre>			
+		</dd>
+	
+	</dl>
+</section>
+
+</body>
+</html>

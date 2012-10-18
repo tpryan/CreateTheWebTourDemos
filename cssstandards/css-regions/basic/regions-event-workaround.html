@@ -1,0 +1,100 @@
+<!DOCTYPE HTML>
+<html lang="ru-RU">
+<head>
+    <title></title>
+    <meta charset="UTF-8">
+    <style type="text/css">       
+    
+    article{
+        -webkit-flow-into: article;
+        font-size: 1.3em;
+    }        
+    
+    article p{
+        margin: 0 0 2em;
+    }
+    
+    article p:last-child{
+        color: blue;
+    }
+    
+    .region{
+        -webkit-flow-from: article;
+        width: 30%;
+        height: 300px;
+        float: left;
+        padding: 20px;
+        background: #eee;
+    }                              
+    
+    .region + .region{
+        margin-left: 40px;
+    }
+    
+    .highlight{
+        background: yellow;
+    }
+    
+    </style>
+</head>                 
+<body>   
+    <h1>Click events on CSS Regions - workaround</h1>
+    
+    <p>
+        Click the text content to toggle a yellow highlight on its corresponding region. Resize the page to see content flowing across regions. <br />If the text content node is broken across both regions they both respond to highlight.
+         
+    </p>
+    
+    <div class="region" id="region1"></div>
+    <div class="region" id="region2"></div>
+    <article>
+        <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        </p>
+        <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        </p>
+    </article>
+    
+    <script type="text/javascript">
+    
+        var namedFlow = document.webkitGetNamedFlows()["article"],
+            region1 = document.querySelector("#region1"),
+            region2 = document.querySelector("#region2")
+        
+                                   
+        
+        region1.addEventListener("click", function(e){
+            e.target.classList.toggle('highlight')
+        }) 
+        
+        region2.addEventListener("click", function(e){
+            e.target.classList.toggle('highlight')
+        })
+        
+        document.addEventListener("click", function(e){
+            
+            var regionsByContent = namedFlow.getRegionsByContent(e.target)
+
+            if (regionsByContent){
+                Array.prototype.forEach.call(regionsByContent, function(region){ 
+                    
+                    // create a new event
+                    var event = document.createEvent("MouseEvents")
+
+                    // duplicate event properties into the new event
+                    event.initMouseEvent(e.type, e.bubbles, e.cancelable, e.view, 
+                                         e.detail, e.screenX, e.screenY, e.clientX, e.clientY, 
+                                         e.ctrlKey, e.altKey, e.shiftKey, e.metaKey, 
+                                         e.button, e.relatedTarget); 
+                                         
+                    // dispatch new event
+                    region.dispatchEvent(event)
+                })
+
+            }
+        }, true)
+    
+    </script>
+</body>
+</html>
