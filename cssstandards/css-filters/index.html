@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html> 
+	<head> 
+		<title>Create The Web</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<!-- <link rel="stylesheet" href="assets/css/main.css" /> -->
+		<script type="text/javascript" src="assets/js/main.js"></script>
+	</head>
+
+
+	<body>
+		<img id="badge" src="assets/img/graphicalweb.png">
+		<br />
+
+		<label>Greyscale:</label>
+		<input type="range" name="greyscale_value" id="greyscale_value" min="0" max="100" value="0">
+		<output id="greyscale_output" for="greyscale_value"></output>
+		<br />
+
+		<label>Sepia:</label>
+		<input type="range" name="sepia_value" id="sepia_value" min="0" max="100" value="0">
+		<output id="sepia_output" for="sepia_value"></output> 
+		<br />
+
+		<label>Saturate:</label>
+		<input type="range" name="saturate_value" id="saturate_value" min="0" max="1000" value="100">
+		<output id="saturate_output" for="saturate_value"></output>  
+		<br />
+
+
+		<label>Hue Rotate:</label>
+		<input type="range" name="hue_rotate_value" id="hue_rotate_value" min="0" max="360" value="0">
+		<output id="hue_rotate_output" for="hue_rotate_value"></output>
+		<br />
+		<label>Brightness</label>
+		<input type="range" name="brightness_value" id="brightness_value" min="0" max="200" value="0">
+		<output id="brightness_output" for="brightness_value"></output>
+		<br />
+		<label>Contrast</label>
+		<input type="range" name="contrast_value" id="contrast_value" min="0" max="1000" value="100">
+		<output id="contrast_output" for="contrast_value"></output>
+		<br />
+		<label>Invert</label>
+		<input type="range" name="invert_value" id="invert_value" min="0" max="100" value="0">
+		<output id="invert_output" for="invert_value"></output>
+		<br />
+		<label>Blur</label>
+		<input type="range" name="blur_value" id="blur_value" min="0" max="100" value="0">
+		<output id="blur_output" for="blur_value"></output>
+		<br />
+		
+		<label>Drop shadow</label>
+		<input type="range" name="ds_x_value" id="ds_x_value" min="-20" max="20" value="0">
+		<output id="ds_x_output" for="ds_x_value"></output>
+		<input type="range" name="ds_y_value" id="ds_y_value" min="-20" max="20" value="0">
+		<output id="ds_y_output" for="ds_y_value"></output>
+		<input type="range" name="ds_spread_value" id="ds_spread_value" min="-20" max="20" value="0">
+		<output id="ds_spread_output" for="ds_spread_value"></output>
+		<input type="color" name="ds_color_value" id="ds_color_value" value="#000000">
+		<output id="ds_color_output" for="ds_color_value"></output>
+
+	</body>
+</html>		
