@@ -1,0 +1,103 @@
+<!--
+Copyright 2011 Adobe Systems, incorporated
+This work is licensed under a Creative Commons Attribution-Noncommercial-Share Alike 3.0 Unported License <http://creativecommons.org/licenses/by-nc-sa/3.0/> . 
+Permissions beyond the scope of this license, pertaining to the examples of code included within this work are available at Adobe <http://www.adobe.com/communities/guidelines/ccplus/commercialcode_plus_permission.html> .
+-->
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+	<title>CSS Regions - DropCap Exclusion Demo</title>
+	<meta charset="UTF-8">
+	
+	<style type="text/css">
+	
+	body,
+	html{
+		height:100%;
+		width:100%;
+		overflow:hidden;
+	}
+	
+	body{
+		margin:0;
+		font-family: Helvetica, Arial, sans-serif;
+		color:#222;
+		font-size:15px;
+		line-height:20px;
+	}
+	
+	p{
+		margin:0;
+		display:inline;
+	}
+	
+	#instructions{
+		font-size:13px;
+		padding:5px 25px;
+		background:#ffc;
+		border-bottom:1px solid #fc0;
+	}
+	
+	#workspace{
+		padding-left:25px;
+	}
+	
+	#article-content{
+        -webkit-flow: "body";
+		-webkit-wrap-shape-mode: content;
+		font-family: "Georgia", serif;
+		text-align: justify;
+		margin-top:0;
+	}
+	
+	.region-content{
+		content: from(body);
+	}
+	
+	#dropCap{
+		-webkit-wrap-shape: polygon(0px,0px 280px,0px 220px,125px 0px,125px);
+		-webkit-wrap-shape-mode: around;
+		-webkit-wrap-shape-order: 1;
+	
+		position: absolute;
+		top:30px;
+		left:25px;
+		width: 300px;
+		height:140px;
+		content: from(body-drop);
+	}		
+		
+	#region1{
+		width:50%;
+		height:400px;
+		margin-top:50px;
+	}
+	
+	#dropMany{
+	    -webkit-flow: "body-drop";
+		font-family: "Georgia", serif;
+		font-size: 95px;
+		line-height: 140px;
+		margin-top:0;
+	}
+
+	
+	</style>
+</head>
+<body>
+	<div id="instructions">
+		<strong>Tip:</strong> resize the browser window to see how the text flows next to the dropcap.
+	</div>
+	
+	<div id="workspace">
+		<div id="article-content">
+			<p><span id="dropMany">Many</span> instances of drop caps do not actually use all capital letters. The first word or the first sentence may be emphasized in some way, and the text wraps around it. If the text can wrap around the shape of the glyph instead of a rectangle, the effect is that much better.</p>
+			<p>The text content in this HTML markup is not divided between the drop cap and the rest – you can search for or select "Many instances," and copy the unbroken string. There are a few selection artifacts in this current build when you do that, though.</p>
+		</div>
+
+		<div id="dropCap"></div>
+		<div id="region1" class="region-content"></div>
+	</div>
+	
+</body>
+</html>

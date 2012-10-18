@@ -1,0 +1,320 @@
+<!--
+Copyright 2011 Adobe Systems, incorporated
+This work is licensed under a Creative Commons Attribution-Noncommercial-Share Alike 3.0 Unported License <http://creativecommons.org/licenses/by-nc-sa/3.0/> . 
+Permissions beyond the scope of this license, pertaining to the examples of code included within this work are available at Adobe <http://www.adobe.com/communities/guidelines/ccplus/commercialcode_plus_permission.html> .
+-->
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>CSS Regions - Piechart Demo</title>
+	<style type="text/css">
+	html,
+	body{
+		width:100%;
+		height:100%;
+	}
+	
+	body{
+		margin:0;
+		font-family:Helvetica, Arial, sans-serif;
+	}
+	
+	#source{
+		-webkit-hyphens:auto;
+		text-align:justify;
+		color:#444;
+		font-size:13px;
+		line-height:20px;
+	}
+	
+	#content-slice1{
+		-webkit-flow: "thread-slice1";   
+	}
+	#content-slice2{
+		-webkit-flow: "thread-slice2";
+	}
+	#content-slice3{
+		padding:4px;
+		-webkit-flow: "thread-slice3";
+	}
+	#content-slice4{
+		-webkit-flow: "thread-slice4";
+	}
+	
+	#workspace{
+		position:relative;
+		outline:1px solid red;
+		width:100%;
+		height:100%;
+		background: #FBF8F6 url("images/route_1.png") left 20% repeat-x;
+		-webkit-transition: all 0.4s ease-out
+		
+	}
+	
+	h1{
+		position:absolute;
+		top:3%;
+		left:7%;
+		color:#919789;
+		text-transform:uppercase;
+		font-size:98px;
+		letter-spacing:-2px;
+		width:315px;
+		line-height:80px;
+		margin:0;
+		padding:0;
+	}
+	
+	h1 em{
+		text-transform:none;
+		font-style:normal;
+		font-weight:lighter;
+		font-family:"Arial Narrow";
+		letter-spacing:0;
+		font-size:28px;
+		line-height:28px;
+		display:inline-block;
+		width:30px;
+		margin-left:-20px;
+	}
+	
+	#piechart{
+		position:absolute;
+		right:5%;
+		bottom:10%;
+		width:500px;
+		height:500px;
+	}
+	
+	.slice{
+		position:absolute;
+		-webkit-wrap-shape-mode: content;
+		-webkit-transition: all 0.4s ease-out;
+		z-index:2;        
+	}   
+	
+	.slice .region{            
+		  	position:absolute;   
+		-webkit-wrap-shape-mode: content;
+/*		-webkit-render-wrap-shape: auto;*/
+	}
+	
+	
+	.slice1{
+		-webkit-wrap-shape: polygon(60px, 249px 0px, 492px 35px, 498px 71px, 500px 105px, 496px 139px, 488px 170px, 475px 200px, 457px 228px, 435px 253px, 408px 274px, 378px 291px, 347px 302px, 314px 309px, 280px 311px, 246px 307px, 211px 299px, 177px 286px, 143px 268px, 111px 247px, 83px 222px, 58px 194px, 38px 164px, 21px 131px, 9px 97px, 2px 60px, 0px 60px, 249px 60px, 249px );
+		right:0;
+		top:0;
+		width:311px;
+		height:500px;
+		background:transparent url("images/piechart-slice1.png") center center no-repeat;        
+	}      
+	
+	.slice1 .region{          
+		top:10px;
+		left:20px;
+		width:280px;
+		height:469px;               
+		-webkit-wrap-shape: polygon(55px, 234px 0px, 461px 32px, 468px 64px, 469px 95px, 466px 125px, 458px 154px, 445px 181px, 429px 206px, 408px 228px, 383px 247px, 355px 262px, 326px 272px, 295px 278px, 263px 280px, 231px 277px, 198px 270px, 166px 258px, 134px 242px, 104px 222px, 78px 200px, 55px 175px, 36px 148px, 20px 119px, 9px 88px, 2px 55px, 0px 55px, 234px 55px, 234px );
+		content: from(thread-slice1); 
+	}
+	           
+	.slice2{
+		top:249px;
+		left:64px;
+		width:186px;
+		height:242px;
+		background:transparent url("images/piechart-slice2.png");
+		
+		-webkit-transform: translate(-30px,30px);
+	} 
+	
+	.slice2 .region{  
+		top:30px;
+		left:15px;
+		content: from(thread-slice2); 
+		-webkit-wrap-shape: polygon(149px, 0px 149px, 0px 0px, 134px 22px, 155px 45px, 172px 71px, 186px 100px, 195px 149px, 0px 149px, 0px);        
+		width:149px;
+		height:195px;
+	}
+	
+	.slice3{
+		top:50px;
+		left:0;
+		top:185px;
+		width:250px;
+		height:251px;
+		background:transparent url("images/piechart-slice3.png") no-repeat;
+		-webkit-transform: translate(-30px,-0px);
+	}    
+	
+	.slice3 .region{
+		content: from(thread-slice3);
+		top:15px;
+		left:10px;
+		width:213px;
+		height:197px;
+		-webkit-wrap-shape: polygon(213px, 55px 213px, 55px 8px, 0px 2px, 27px 0px, 53px 1px, 79px 5px, 105px 13px, 129px 24px, 153px 38px, 176px 55px, 197px 213px, 55px 213px, 55px); 
+	}
+
+	.slice4{
+		top:0;
+		left:9px;
+		width:241px;
+		height:250px;
+		background:transparent url("images/piechart-slice4.png") no-repeat;
+		-webkit-transform: translate(-20px,-20px);
+	}    
+	
+	.slice4 .region{           
+		content: from(thread-slice4);         
+		top:10px;
+		left:10px;
+		width:217px;
+		height:225px;
+		-webkit-wrap-shape: polygon(217px, 225px 217px, 225px 217px, 0px 179px, 3px 143px, 12px 110px, 26px 80px, 46px 53px, 70px 31px, 98px 13px, 131px 0px, 167px 217px, 225px 217px, 225px )            
+	}
+	
+	.legend{
+		position:absolute;
+		text-transform:uppercase;
+		color:#8E582B;
+		font-size:22px;
+		-webkit-transition: all 0.4s ease-out;
+	}
+	
+	.legend span{
+		display:block;
+		font-size:16px;
+		text-align:right;
+	}
+	
+	.legend1{
+		top:15px;
+		right:15px;
+	}
+	
+	.legend2{
+		bottom:-40px;
+		left:30px;
+	}
+	
+	.legend3{
+		left:-150px;
+		top:260px;
+	}
+	
+	.legend4{
+		left:-20px;
+		top:-20px;
+	}
+	
+	@media all and (orientation:landscape) {
+		#workspace{
+			background-position:left 30%;
+		}
+	}
+	
+	@media all and (orientation:portrait) {
+		#piechart{
+			left:0;
+			right:0;
+			bottom:5%;
+			margin-left:auto;
+			margin-right:auto;
+		}
+		
+		.legend{
+			top:-100px;
+			width:25%;
+			display:block;
+		}
+		
+		.legend:before{
+			display:block;
+			content: "x";
+			text-indent:9999px;
+			width:100%;
+			height:10px;
+			overflow:hidden;
+			margin:0 7px 10px 0;
+		}
+		
+		.legend span{
+			text-align:left;
+		}
+		
+		.legend1:before{
+			background:#FFF4BC;
+		}
+		
+		.legend1{
+			left:75%;
+		}
+		
+		.legend2:before{
+			background:#CD6623;
+		}		
+		
+		.legend2{
+			left:50%;
+		}
+		
+		.legend3:before{
+			background:#E4C994;
+		}
+		
+		.legend3{
+			left:25%;
+		}
+		
+		.legend4:before{
+			background:#92988A;
+		}
+		
+		.legend4{
+			left:0%;
+		}
+		
+		.slice1,
+		.slice2,
+		.slice3,
+		.slice4{
+			-webkit-transform: translate(0px, 0px );
+		}
+	}
+	
+	
+	</style>
+</head>
+<body>
+	<div id="source">
+		<div id="content-slice1">Gas&shy;o&shy;line is a clear, but slight&shy;ly yel&shy;low&shy;ish pe&shy;tro&shy;le&shy;um-de&shy;rived liq&shy;uid mix&shy;ture which is pri&shy;mar&shy;i&shy;ly used as a fuel in in&shy;ter&shy;nal com&shy;bus&shy;tion en&shy;gines. It is also used as a sol&shy;vent, main&shy;ly known for its abil&shy;i&shy;ty to di&shy;lute paints. It con&shy;sists most&shy;ly of al&shy;i&shy;phat&shy;ic hy&shy;dro&shy;car&shy;bons ob&shy;tained by the frac&shy;tion&shy;al dis&shy;til&shy;la&shy;tion of pe&shy;tro&shy;le&shy;um, en&shy;hanced with iso-oc&shy;tane or the ar&shy;o&shy;mat&shy;ic hy&shy;dro&shy;car&shy;bons tol&shy;u&shy;ene and ben&shy;zene to in&shy;crease its oc&shy;tane rat&shy;ing. Small quan&shy;ti&shy;ties of var&shy;i&shy;ous ad&shy;di&shy;tives are com&shy;mon, for pur&shy;pos&shy;es such as tun&shy;ing en&shy;gine per&shy;for&shy;mance or re&shy;duc&shy;ing harm&shy;ful ex&shy;haust emis&shy;sions. Some mix&shy;tures also con&shy;tain sig&shy;nif&shy;i&shy;cant quan&shy;ti&shy;ties of eth&shy;a&shy;nol as a par&shy;tial al&shy;ter&shy;na&shy;tive fuel. Most cur&shy;rent or for&shy;mer Com&shy;mon&shy;wealth coun&shy;tries use the term.</div>
+		<div id="content-slice2">Gas&shy;o&shy;line is a clear, but slight&shy;ly yel&shy;low&shy;ish pe&shy;tro&shy;le&shy;um-de&shy;rived liq&shy;uid mix&shy;ture which is pri&shy;mar&shy;i&shy;ly</div>
+		<div id="content-slice3">Gas&shy;o&shy;line is a clear, but slight&shy;ly yel&shy;low&shy;ish pe&shy;tro&shy;le&shy;um-de&shy;rived liq&shy;uid mix&shy;ture which is pri&shy;mar&shy;i&shy;ly. Gas&shy;o&shy;line is a clear, but slight&shy;ly yel&shy;low&shy;ish pe&shy;tro&shy;le&shy;um-de&shy;rived liq&shy;uid mix&shy;ture which is pri&shy;mar&shy;i&shy;ly</div>
+		<div id="content-slice4">Not eve&shy;ry meal is go&shy;ing to be what the av&shy;er&shy;age per&shy;son con&shy;sid&shy;ers a ‘meal.’ Don’t let your budg&shy;et keep you from soak&shy;ing up lo&shy;cal cul&shy;ture. Even the tight&shy;est budg&shy;et has room for play. Ad&shy;di&shy;tives are com&shy;mon, for pur&shy;pos&shy;es such as tun&shy;ing en&shy;gine per&shy;for&shy;mance or re&shy;duc&shy;ing harm&shy;ful ex&shy;haust.</div>
+	</div>
+
+	<div id="workspace">
+		<h1>The <em>not so hidden</em> Cost$</h1>
+		<div id="piechart">
+			<div class="slice slice1">
+				<div class="region">slice1</div>
+			</div>
+			<div class="slice slice2">
+				<div class="region">slice2</div>	
+			</div>
+			<div class="slice slice3">
+				<div class="region">slice3</div>	
+			</div>
+			<div class="slice slice4">
+				<div class="region">slice4</div>	
+			</div>
+			<div class="legend legend1">Fuel <span>$600</span></div>
+			<div class="legend legend2">Fun <span>$150</span></div>
+			<div class="legend legend3">Lodging <span>$300</span></div>
+			<div class="legend legend4">Meals <span>$350</span></div>
+		</div>
+	</div>
+</body>
+</html>

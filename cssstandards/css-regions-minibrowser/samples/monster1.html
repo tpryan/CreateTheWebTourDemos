@@ -1,0 +1,115 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Monster</title>
+
+	<style type="text/css">
+		body{
+			font-family: "Fanwood";
+			font-size: 35px;
+			padding: 0px 20px 50px 20px;
+		}
+
+		#container{
+			text-align:justify;
+			-webkit-hyphens:auto;
+			
+			/* flow the content inside this element */
+			-webkit-wrap-shape-mode: content;
+		}	
+		
+		.exclusion{
+			position:absolute;
+			
+			/* flow text around this element */
+			-webkit-wrap-shape-mode: around;
+
+			/* display the shape outline */
+			/*-webkit-render-wrap-shape: auto;*/
+		}
+
+		#exclusion1{
+			top:100px;
+			left:350px;
+		}
+
+		.monster{
+		/* shape the element as a heart */
+		-webkit-wrap-shape: polygon(0px, 98px
+									114px, 15px 
+									280px, 15px
+									350px, 153px
+									420px, 211px
+									420px, 250px
+									410px, 230px
+									131px, 280px
+									0px, 153px 
+									0px, 108px);
+
+		}
+
+	#img{
+		position: absolute;
+		top:0;
+		left:0;
+	}
+
+	#container{
+        -webkit-flow: "body";
+		-webkit-wrap-shape-mode: content;
+		margin-top:0;
+	}
+	
+	.region-content{
+		content: from(body);
+	}
+	#dropCap{
+		-webkit-wrap-shape: polygon(0px,0px 280px,0px 220px,125px 0px,125px);
+		-webkit-wrap-shape-mode: around;
+		-webkit-wrap-shape-order: 1;
+	
+		position: absolute;
+		top:30px;
+		left:25px;
+		width: 300px;
+		height:140px;
+		content: from(body-drop);
+	}	
+
+	#dropMany{
+	    -webkit-flow: "body-drop";
+		font-size: 95px;
+		line-height: 140px;
+		margin-top:0;
+	}
+
+	#region1{
+		width:100%;
+		height:400px;
+		margin-top:50px;
+	}
+
+	
+
+	</style>
+
+</head>
+<body>
+<div id="workspace">
+		
+		<div id="exclusion1" class="exclusion monster">
+			<img id="img" src="images/monster/monster.png" > 
+		</div>
+		<div id="container">
+			<p><span id="dropMany">Many</span> years ago, there lived a monster.  He was a very scary monster. 
+				People were afraid of him. 
+				People were afraid of him because he looked angry all the time. The monster looked angry all the time
+				  because he was angry all the time. The monster was angry all the time because people were afraid of him. 
+				  It was a big viscous circle.</p>
+		</div>
+		<div id="dropCap"></div>
+		<div id="region1" class="region-content"></div>	
+</div>
+</body>
+</html>	

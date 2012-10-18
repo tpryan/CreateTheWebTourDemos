@@ -1,0 +1,241 @@
+<!--
+Copyright 2011 Adobe Systems, incorporated
+This work is licensed under a Creative Commons Attribution-Noncommercial-Share Alike 3.0 Unported License <http://creativecommons.org/licenses/by-nc-sa/3.0/> . 
+Permissions beyond the scope of this license, pertaining to the examples of code included within this work are available at Adobe <http://www.adobe.com/communities/guidelines/ccplus/commercialcode_plus_permission.html> .
+-->
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>CSS Regions - Bonneville Speedway Panorama</title>
+	<style type="text/css">
+	
+	html,
+	body{
+		width:100%;
+		height:100%;
+	}
+	
+	body{
+		margin:0;
+		font-family:Helvetica, Arial, sans-serif;
+		color:#fff;
+	}
+	
+	h1{
+		margin:20px 0;
+		font-size:110px;
+		letter-spacing:-7px;
+		line-height:90px;
+		margin-left:-30px;
+		text-transform:uppercase;
+	}
+	
+	.caption{
+		display:block;
+		margin:30px 0 0;
+		font-size:11px;
+		text-transform:uppercase;
+	}
+	.caption em{
+		display:block;
+	}
+	
+	#workspace{
+		position:relative;
+		outline:1px solid red;
+		width:100%;
+		height:100%;
+		min-width:600px;
+		min-height:600px;
+		overflow:hidden;
+	}
+	
+	#source{
+		-webkit-flow: "article-thread";
+		-webkit-hyphens: auto;
+		text-align:justify;
+		font-family: Georgia, Times, serif;
+		font-size:13px;
+		line-height:18px;
+	}
+	
+	#exclusion{
+		position:absolute;
+		height:355px;
+		width:1650px;
+		top:440px;
+		-webkit-wrap-shape: polygon(0px, 0px 62px, 41px 144px, 55px 265px, 112px 517px, 112px 615px, 98px 694px, 61px 834px, 89px 934px, 109px 1005px, 108px 1077px, 106px 1129px, 46px 1166px, 39px 1185px, 68px 1266px, 26px 1348px, 16px 1500px, 24px 1591px, 49px 1650px, 91px 1650px, 355px 0px, 351px 0px, 0px 0px, 0px );
+		-webkit-wrap-shape-mode: around;
+		-webkit-wrap-shape-order: 2;
+/*		-webkit-render-wrap-shape: auto;*/
+	}
+	
+	#panorama{
+		position:absolute;
+		width:1650px;
+		height:100%;
+/*		right:0;*/
+		max-height:1024px;
+		max-width:1650px;
+		background:transparent url("images/bonneville_panorama.jpg") left top no-repeat;
+		z-index:1;
+	}
+	
+	#article{
+		position:relative;
+		z-index:2;
+		height:75%;
+		width:83%;
+		left:0;
+		right:0;
+		margin-left:auto;
+		margin-right:auto;
+	}
+	
+	#regions{
+		position:relative;
+		overflow:hidden;
+	}
+	
+	.region{
+		content: from(article-thread);
+		-webkit-wrap-shape-mode: content;
+		height:50%;
+		width:31%;
+		float:left;
+	}
+	
+	#region2{
+		margin:0 3%;
+	}
+	
+	#slider{
+		width:30%;
+		position:absolute;
+		z-index:3;
+		bottom:50px;
+		left:50px;
+		height:30px;
+		
+		-webkit-appearance: none;
+		background: none;
+	}
+	
+	#slider::-webkit-slider-thumb {
+	    -webkit-appearance: none;
+
+	    width: 140px;
+	    height: 60px;
+		background: url("images/slider_control.png") left top no-repeat;
+
+	}
+	
+	
+	
+	@media all and (orientation:landscape) {
+		#panorama{
+			left:0;
+		}
+	}
+	
+	@media all and (orientation:portrait) {
+		#panorama{
+			left:0;
+		}
+	}
+	
+	/* Customizations for Galaxy Tab in portrait mode */
+	@media all and (orientation:portrait) and (max-width: 600px){
+		h1{
+			font-size:95px;
+		}
+		
+		#panorama{
+			left:0;
+		}
+		
+		.region{
+			width:48%;
+		}
+		
+		#region2{
+			margin:0 0 0 4%;
+		}
+		
+		#region3{
+			display:none;
+		}
+	}
+	
+	/* Customizations for Galaxy Tab in landscape mode */
+	@media all and (orientation:landscape) and (max-height: 600px){
+		h1{
+			font-size:75px;
+			line-height:60px;
+			letter-spacing:-5px;
+		}
+		
+		#panorama{
+			left:0;
+		}
+		
+		#panorama{
+			height:1024px;
+			margin-top:-180px;
+		}
+	}
+	
+	</style>
+</head>
+<body>
+	
+	<div id="source">
+		<p>Bon&shy;ne&shy;ville Speed&shy;way is an area of the Bon&shy;ne&shy;ville Salt Flats near Wen&shy;d&shy;o&shy;ver, Utah, that is marked out for mo&shy;tor sports. It is par&shy;tic&shy;u&shy;lar&shy;ly not&shy;ed as the ven&shy;ue for nu&shy;mer&shy;ous land speed re&shy;cords.</p>		<p>The salt flats were first used for mo&shy;tor sports in 1912, but didn’t be&shy;come tru&shy;ly pop&shy;u&shy;lar un&shy;til the 1930s when Ab Jen&shy;kins and Sir Mal&shy;colm Camp&shy;bell com&shy;pet&shy;ed to set land speed re&shy;cords.</p>
+		<p>Bon&shy;ne&shy;ville Speed&shy;way is an area of the Bon&shy;ne&shy;ville Salt Flats near Wen&shy;d&shy;o&shy;ver, Utah, that is marked out for mo&shy;tor sports. It is par&shy;tic&shy;u&shy;lar&shy;ly not&shy;ed as the ven&shy;ue for nu&shy;mer&shy;ous land speed re&shy;cords.The salt flats were first used for mo&shy;tor sports in 1912, but didn’t be&shy;come tru&shy;ly pop&shy;u&shy;lar un&shy;til the 1930s when Ab Jen&shy;kins and Sir Mal&shy;colm Camp&shy;bell com&shy;pet&shy;ed to set land speed re&shy;cords.Bon&shy;ne&shy;ville Speed&shy;way is an area of the Bon&shy;ne&shy;ville Salt Flats near Wen&shy;d&shy;o&shy;ver, Utah, that is marked out for mo&shy;tor sports. It is par&shy;tic&shy;u&shy;lar&shy;ly not&shy;ed as the ven&shy;ue for nu&shy;mer&shy;ous land speed re&shy;cords.The salt flats were first used for mo&shy;tor sports in 1912, but didn’t be&shy;come tru&shy;ly pop&shy;u&shy;lar un&shy;til the 1930s when Ab Jen&shy;kins and Sir Mal&shy;colm Camp&shy;bell com&shy;pet&shy;ed to set land speed re&shy;cords.</p>
+		<p>Bon&shy;ne&shy;ville Speed&shy;way is an area of the Bon&shy;ne&shy;ville Salt Flats near Wen&shy;d&shy;o&shy;ver, Utah, that is marked out for mo&shy;tor sports. It is par&shy;tic&shy;u&shy;lar&shy;ly not&shy;ed as the ven&shy;ue for nu&shy;mer&shy;ous land speed re&shy;cords.The salt flats were first used for mo&shy;tor sports in 1912, but didn’t be&shy;come tru&shy;ly pop&shy;u&shy;lar un&shy;til the 1930s when Ab Jen&shy;kins and Sir Mal&shy;colm Camp&shy;bell com&shy;pet&shy;ed to set land speed re&shy;cords.Bon&shy;ne&shy;ville Speed&shy;way is an area of the Bon&shy;ne&shy;ville Salt Flats near Wen&shy;d&shy;o&shy;ver, Utah, that is marked out for mo&shy;tor sports. It is par&shy;tic&shy;u&shy;lar&shy;ly not&shy;ed as the ven&shy;ue for nu&shy;mer&shy;ous land speed re&shy;cords.The salt flats were first used for mo&shy;tor sports in 1912, but didn’t be&shy;come tru&shy;ly pop&shy;u&shy;lar un&shy;til the 1930s when Ab Jen&shy;kins and Sir Mal&shy;colm Camp&shy;bell com&shy;pet&shy;ed to set land speed re&shy;cords.</p>
+		<p>Bon&shy;ne&shy;ville Speed&shy;way is an area of the Bon&shy;ne&shy;ville Salt Flats near Wen&shy;d&shy;o&shy;ver, Utah, that is marked out for mo&shy;tor sports. It is par&shy;tic&shy;u&shy;lar&shy;ly not&shy;ed as the ven&shy;ue for nu&shy;mer&shy;ous land speed re&shy;cords.The salt flats were first used for mo&shy;tor sports in 1912, but didn’t be&shy;come tru&shy;ly pop&shy;u&shy;lar un&shy;til the 1930s when Ab Jen&shy;kins and Sir Mal&shy;colm Camp&shy;bell com&shy;pet&shy;ed to set land speed re&shy;cords.Bon&shy;ne&shy;ville Speed&shy;way is an area of the Bon&shy;ne&shy;ville Salt Flats near Wen&shy;d&shy;o&shy;ver, Utah, that is marked out for mo&shy;tor sports. It is par&shy;tic&shy;u&shy;lar&shy;ly not&shy;ed as the ven&shy;ue for nu&shy;mer&shy;ous land speed re&shy;cords.The salt flats were first used for mo&shy;tor sports in 1912, but didn’t be&shy;come tru&shy;ly pop&shy;u&shy;lar un&shy;til the 1930s when Ab Jen&shy;kins and Sir Mal&shy;colm Camp&shy;bell com&shy;pet&shy;ed to set land speed re&shy;cords.</p>
+	</div>
+	
+	<div id="workspace">
+		<input type="range" min="0" max="100" value="0" id="slider" />	
+		
+		<div id="panorama">
+			<div id="exclusion"></div>
+		</div>
+		
+		<div id="article">
+			<span class="caption"><em>Bonneville salt flats</em> West Wendover, UT</span>
+			
+			<h1>Bonneville Speedway</h1>
+
+			<div id="regions">
+				<div id="region1" class="region">Region 1</div>
+				<div id="region2" class="region">Region 2</div>
+				<div id="region3" class="region">Region 3</div>
+			</div>
+		</div>
+	</div>
+	
+	
+	<script type="text/javascript">
+		var panorama = document.querySelector('#panorama'),
+			slider = document.querySelector('#slider'),
+			viewport = document.querySelector('#workspace'),
+			offsetDelta = panorama.clientWidth - viewport.clientWidth;
+			
+		function reset(){
+			offsetDelta = panorama.clientWidth - viewport.clientWidth;
+			slider.value = 0;
+			panorama.style.left = 0;
+		}
+			
+		slider.addEventListener("change", function(e){
+			panorama.style.left = -1 * (offsetDelta/100 * e.target.valueAsNumber) +"px";
+		}, false);
+		
+		window.addEventListener("resize", reset, false);
+			
+	</script>
+</body>
+</html>

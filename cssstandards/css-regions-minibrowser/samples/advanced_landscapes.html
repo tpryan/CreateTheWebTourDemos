@@ -1,0 +1,167 @@
+<!--
+Copyright 2011 Adobe Systems, incorporated
+This work is licensed under a Creative Commons Attribution-Noncommercial-Share Alike 3.0 Unported License <http://creativecommons.org/licenses/by-nc-sa/3.0/> . 
+Permissions beyond the scope of this license, pertaining to the examples of code included within this work are available at Adobe <http://www.adobe.com/communities/guidelines/ccplus/commercialcode_plus_permission.html> .
+-->
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>CSS Regions - Arches National Park</title>
+	<style type="text/css">
+	
+	html,
+	body{
+		width:100%;
+		height:100%;
+	}
+	
+	body{
+		margin:0;
+		font-family:Georgia, Times, serif;
+		color:#fff;
+	}
+	
+	h1{
+		margin:20px 0;
+		font-size:32px;
+		line-height:30px;
+		letter-spacing:-1px;
+		font-weight:lighter;
+	}
+	
+	.caption{
+		position:absolute;
+		z-index:2;
+		display:block;
+		margin:30px 0 0 30px;
+		font-size:11px;
+		font-family:Helvetica, Arial, sans-serif;
+		text-transform:uppercase;
+	}
+	.caption em{
+		display:block;
+	}
+	
+	#workspace{
+		position:relative;
+		width:100%;
+		height:100%;
+		min-width:600px;
+		min-height:600px;
+		overflow:hidden;
+	}
+	
+	#source{
+		-webkit-flow: "article-thread";
+		-webkit-hyphens: auto;
+		text-align:justify;
+		font-size:15px;
+		line-height:22px;
+	}
+	
+	#illustration{
+		position:absolute;
+		top:0px;
+		left:0px;
+		z-index:1;
+		-webkit-wrap-shape-mode: around;
+		-webkit-wrap-shape-order: 2;
+	}
+	
+	#article{
+		content: from(article-thread);
+		position:absolute;
+		z-index:2;
+		-webkit-wrap-shape-mode: content;
+		-webkit-wrap-shape-order: 1;
+	}
+	
+	@media all and (orientation:landscape) {
+		#illustration{
+			background: url("images/arches_slide1_l.jpg") left top no-repeat;
+			-webkit-wrap-shape: polygon(406px, -8px 403px, 63px 424px, 95px 439px, 136px 463px, 154px 487px, 175px 512px, 204px 548px, 236px 567px, 277px 591px, 338px 613px, 363px 644px, 383px 684px, 397px 706px, 424px 740px, 479px 752px, 531px 775px, 547px 789px, 575px 789px, 602px 797px, 648px 801px, 750px 801px, 776px -9px, 778px -9px, -12px 406px, -8px);
+			width: 1024px;
+			height: 768px;
+		}
+		
+		#article{
+			top:60px;
+			right:20px;
+			width:522px;
+			height:628px;
+		}
+		
+		#workspace{
+			max-width: 1024px;
+		}
+	}
+	
+	@media all and (orientation:portrait) {
+		#illustration{
+			background: url("images/arches_slide1_p.jpg") left top no-repeat;
+			-webkit-wrap-shape: polygon(323px, 7px 323px, 67px 320px, 97px 364px, 135px 418px, 210px 437px, 271px 496px, 292px 549px, 359px 578px, 428px 582px, 573px 570px, 687px 567px, 714px 654px, 720px 786px, 750px 781px, 1024px -12px, 1036px -13px, -9px 323px, -10px 323px, 7px);
+			width: 768px;
+			height: 1024px;
+		}
+		
+		#article{
+			top:80px;
+			right:20px;
+			height:664px;
+			width:441px;
+		}
+		
+		#workspace{
+			max-width: 768px;
+		}
+	}
+	
+	/* Customizations for Galaxy Tab in portrait mode */
+	@media all and (orientation:portrait) and (max-width: 600px){
+		#illustration{
+			-webkit-transform: translate(-168px, 0);
+		}
+		
+		#workspace{
+			max-width: 600px;
+		}
+	}
+	
+	/* Customizations for Galaxy Tab in landscape mode */
+	@media all and (orientation:landscape) and (max-height: 600px){
+			#illustration{
+				-webkit-transform: translate(0, -60px);
+			}
+			
+			#article{
+				top:30px;
+				height:560px;
+			}
+			
+			#workspace{
+				max-width: 1024px;
+			}
+	}
+	
+	</style>
+</head>
+<body>
+	
+	<div id="source">
+		<h1>Arches National Park</h1>
+		<p>lies atop an un&shy;der&shy;ground evap&shy;o&shy;rite lay&shy;er or salt bed, which is the main cause of the for&shy;ma&shy;tion of the arch&shy;es, spires, bal&shy;anced rocks, sand&shy;stone fins, and erod&shy;ed mon&shy;o&shy;liths in the area.
+		This salt bed is thou&shy;sands of feet thick in plac&shy;es, and was de&shy;pos&shy;it&shy;ed in the Par&shy;a&shy;dox Ba&shy;sin of the Col&shy;o&shy;ra&shy;do Pla&shy;teau some 300 mil&shy;lion years ago when a sea flowed into the re&shy;gion and even&shy;tu&shy;al&shy;ly evap&shy;o&shy;rat&shy;ed. Over mil&shy;lions of years, the salt bed was cov&shy;ered with de&shy;bris erod&shy;ed from the Un&shy;com&shy;pahgre Up&shy;lift to the north&shy;east.
+		Dur&shy;ing the Ear&shy;ly Ju&shy;ras&shy;sic de&shy;sert con&shy;di&shy;tions pre&shy;vailed in the re&shy;gion and the vast Nav&shy;a&shy;jo Sand&shy;stone was de&shy;pos&shy;it&shy;ed. An ad&shy;di&shy;tion&shy;al se&shy;quence of stream laid and wind&shy;blown sed&shy;i&shy;ments, the En&shy;tra&shy;da Sand&shy;stone, was de&shy;pos&shy;it&shy;ed on top of the Nav&shy;a&shy;jo. Over 5000 feet of young&shy;er sed&shy;i&shy;ments were de&shy;pos&shy;it&shy;ed and have been most&shy;ly erod&shy;ed away. Rem&shy;nants of the cov&shy;er ex&shy;ist in the area in&shy;clud&shy;ing ex&shy;po&shy;sures of the Cre&shy;ta&shy;ceous Man&shy;cos Shale. The arch&shy;es of the area are de&shy;vel&shy;oped most&shy;ly with&shy;in the En&shy;tra&shy;da for&shy;ma&shy;tion.		The weight of this cov&shy;er caused the salt bed be&shy;low it to liq&shy;ue&shy;fy and thrust up lay&shy;ers of rock into salt domes. The evap&shy;o&shy;rites of the area formed more un&shy;u&shy;su&shy;al salt an&shy;ti&shy;clines or lin&shy;e&shy;ar re&shy;gions of up&shy;lift. Fault&shy;ing oc&shy;curred and whole sec&shy;tions of rock sub&shy;sid&shy;ed into the ar&shy;e&shy;as be&shy;tween the domes. In some plac&shy;es, they turned al&shy;most on edge. The re&shy;sult of one such 2,500-foot (760 m) dis&shy;place&shy;ment, the Moab Fault, is seen from the vis&shy;i&shy;tor cent&shy;er.
+		As this sub&shy;sur&shy;face move&shy;ment of salt shaped the land&shy;scape, ero&shy;sion re&shy;moved the young&shy;er rock lay&shy;ers from the sur&shy;face. Ex&shy;cept for iso&shy;lat&shy;ed rem&shy;nants, the ma&shy;jor for&shy;ma&shy;tions vis&shy;i&shy;ble in the park to&shy;day are the salm&shy;on-color&shy;ed En&shy;tra&shy;da Sand&shy;stone, in which most of the arch&shy;es form, and the buff-color&shy;ed Nav&shy;a&shy;jo Sand&shy;stone. These are vis&shy;i&shy;ble in lay&shy;er cake fash&shy;ion through&shy;out most of the park. Over time, wa&shy;ter seeped into the sur&shy;face cracks, joints, and folds of these lay&shy;ers. Ice formed in the fis&shy;sures, ex&shy;pand&shy;ing and put&shy;ting pres&shy;sure on sur&shy;round&shy;ing rock, break&shy;ing off bits and piec&shy;es. Winds lat&shy;er cleaned out the loose par&shy;ti&shy;cles. A se&shy;ries of free-stand&shy;ing fins re&shy;mained. Wind and wa&shy;ter at&shy;tacked these fins un&shy;til, in some, the ce&shy;ment&shy;ing ma&shy;te&shy;ri&shy;al gave way and chunks of rock tum&shy;bled out. Many dam&shy;aged fins col&shy;lapsed. Oth&shy;ers, with the right de&shy;gree of hard&shy;ness and bal&shy;ance, sur&shy;vived de&shy;spite their miss&shy;ing sec&shy;tions. These be&shy;came the fa&shy;mous arch&shy;es. </p>
+	</div>
+	
+	<div id="workspace">
+		<span class="caption"><em>Arches National Park</em> Moab, UT</span>
+		
+		<div id="article">Region 1</div>
+		<div id="illustration"></div>
+	</div>
+	
+</body>
+</html>

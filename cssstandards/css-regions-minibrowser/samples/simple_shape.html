@@ -1,0 +1,104 @@
+<!--
+Copyright 2011 Adobe Systems, incorporated
+This work is licensed under a Creative Commons Attribution-Noncommercial-Share Alike 3.0 Unported License <http://creativecommons.org/licenses/by-nc-sa/3.0/> . 
+Permissions beyond the scope of this license, pertaining to the examples of code included within this work are available at Adobe <http://www.adobe.com/communities/guidelines/ccplus/commercialcode_plus_permission.html> .
+-->
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>CSS Regions - Simple Template Demo</title>
+	<style type="text/css">
+	
+	/* 
+		Colors
+		
+		#C5DFF0 - light blue
+		#D3ECB5 - light green
+		#919789 - dark green
+		#C34150 - desaturated pink
+	*/
+	
+	body,
+	html{
+		height:100%;
+		width:100%;
+		overflow:hidden;
+	}
+	
+	body{
+		margin:0;
+		font-family: Helvetica, Arial, sans-serif;
+		color:#222;
+		font-size:15px;
+		line-height:20px;
+	}
+	
+	#instructions{
+		font-size:13px;
+		padding:5px 25px;
+		background:#ffc;
+		border-bottom:1px solid #fc0;
+	}
+	
+	.container{
+		height:300px;
+		width:300px;
+		text-align:justify;
+		-webkit-hyphens:auto;
+		font-size:13px;
+		
+		/* flow the content inside this element */
+		-webkit-wrap-shape-mode: content;
+		
+		/* display the shape outline */
+		/* -webkit-render-wrap-shape: auto; */
+	}
+	
+	#container1{
+		float:left;
+	}	
+	
+	#container2{
+		float:right;
+		text-align:center;
+		color:#C34150;
+	}
+	
+	.circle{
+		/* shape the element as a circle */
+		-webkit-wrap-shape: polygon(0px, 150px 3px, 120px 12px, 92px 26px, 66px 44px, 44px 66px, 26px 92px, 12px 120px, 3px 150px, 0px 180px, 3px 208px, 12px 234px, 26px 256px, 44px 274px, 66px 288px, 92px 297px, 120px 300px, 150px 297px, 180px 288px, 208px 274px, 234px 256px, 256px 234px, 274px 208px, 288px 180px, 297px 150px, 300px 120px, 297px 92px, 288px 66px, 274px 44px, 256px 26px, 234px 12px, 208px 3px, 180px 0px, 150px 0px, 150px);
+	}
+	
+	.heart{
+		/* shape the element as a heart */
+		-webkit-wrap-shape: polygon(150px, 32px 142px, 23px 132px, 15px 122px, 9px 112px, 4px 100px, 1px 89px, 0px 77px, 0px 64px, 2px 53px, 6px 42px, 11px 32px, 18px 23px, 25px 16px, 34px 10px, 44px 5px, 55px 2px, 67px 0px, 80px 0px, 92px 2px, 103px 6px, 114px 11px, 125px 17px, 135px 25px, 144px 35px, 151px 73px, 180px 89px, 194px 103px, 208px 116px, 226px 128px, 246px 139px, 270px 150px, 300px 161px, 270px 172px, 246px 184px, 226px 197px, 208px 211px, 194px 227px, 180px 265px, 151px 275px, 144px 283px, 135px 289px, 125px 294px, 114px 298px, 103px 300px, 92px 300px, 80px 298px, 67px 295px, 55px 290px, 44px 284px, 34px 277px, 25px 268px, 18px 258px, 11px 247px, 6px 236px, 2px 223px, 0px 211px, 0px 200px, 1px 188px, 4px 178px, 9px 168px, 15px 158px, 23px 150px, 32px 150px, 32px);
+	}
+		
+	#workspace{
+		position:relative;
+		padding:25px;
+		width:700px;
+		margin:0 auto;
+	}
+	
+	</style>
+</head>
+<body>
+	
+	<div id="instructions">
+		Elements can have polygon shapes.
+	</div>
+	
+	<div id="workspace">
+		<div id="container1" class="container circle">
+			<p>The text con&shy;tent in this el&shy;e&shy;ment will wrap in the shape of a cir&shy;cle. Any text that over&shy;flows will be hid&shy;den but us&shy;ing CSS Re&shy;gions you can di&shy;rect it to an&shy;oth&shy;er el&shy;e&shy;ment. Us&shy;ing the no&shy;ta&shy;tion de&shy;scribed in this doc&shy;u&shy;ment you can achieve even more com&shy;plex pol&shy;y&shy;gon shapes. The text con&shy;tent in this el&shy;e&shy;ment will wrap in the shape of a cir&shy;cle. Any text that over&shy;flows will be hid&shy;den but us&shy;ing CSS Re&shy;gions you can di&shy;rect it to an&shy;oth&shy;er el&shy;e&shy;ment. The text con&shy;tent in this el&shy;e&shy;ment will wrap in the shape of a cir&shy;cle. Any text that over&shy;flows will be hid&shy;den but us&shy;ing CSS Re&shy;gions you can di&shy;rect it to an&shy;oth&shy;er el&shy;e&shy;ment.</p>
+		</div>
+		
+		<div id="container2" class="container heart">
+			<p>The text con&shy;tent in this el&shy;e&shy;ment will wrap in the shape of a heart. Any text that over&shy;flows will be hid&shy;den but us&shy;ing CSS Re&shy;gions you can di&shy;rect it to an&shy;oth&shy;er el&shy;e&shy;ment. Us&shy;ing the no&shy;ta&shy;tion de&shy;scribed in this doc&shy;u&shy;ment you can achieve even more com&shy;plex pol&shy;y&shy;gon shapes. The text con&shy;tent in this el&shy;e&shy;ment will wrap in the shape of a heart. Any text that over&shy;flows will be hid&shy;den but us&shy;ing CSS Re&shy;gions you can di&shy;rect it to an&shy;oth&shy;er el&shy;e&shy;ment. The text con&shy;tent in this el&shy;e&shy;ment will wrap in the shape of a heart. Any text that over&shy;flows will be hid&shy;den but us&shy;ing CSS Re&shy;gions you can di&shy;rect it to an&shy;oth&shy;er el&shy;e&shy;ment.</p>
+		</div>
+	</div>
+	
+</body>
+</html>
