@@ -28,14 +28,14 @@ html{
 
 body{
 	font-family: 'source_sans_pro_lightregular';
-	font-size: 2rem;
+	font-size: 1.5rem;
 }
 
 #css-output{
 	font-family: 'source_code_proregular';
 	height: 200px;
 	width: 100%;
-	font-size: 2rem;
+	font-size: 1.5rem;
 	border: none;
 }
 
@@ -59,8 +59,8 @@ input[type="range"]{
 
  input[type="range"]::-webkit-slider-thumb{
    	-webkit-appearance:none !important;
-	height: 30px;
-	width: 30px;
+	height: 20px;
+	width: 20px;
 	background-color: #dddddd;
 	background-image: -webkit-gradient(linear, left top, left bottom, from(#999999), to(#dddddd));
 	background-image: -webkit-linear-gradient(top, #999999, #dddddd);
