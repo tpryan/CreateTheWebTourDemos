@@ -16,6 +16,7 @@
     <author href="http://terrenceryan.com" email="terry@terrenceryan.com">
         Terry Ryan
     </author>
+    <preference name="phonegap-version" value="2.1.0" />
 
     <icon src="img/android/logo/36.png" gap:platform="android" gap:density="ldpi" />
     <icon src="img/android/logo/48.png" gap:platform="android" gap:density="mdpi" />
@@ -31,5 +32,7 @@
     <gap:splash src="img/android/splash/hdpi.png" gap:platform="android" gap:density="hdpi" />
     <gap:splash src="img/android/splash/mdpi.png" gap:platform="android" gap:density="mdpi" />
     <gap:splash src="img/android/splash/ldpi.png" gap:platform="android" gap:density="ldpi" />
+
+    <feature name="http://api.phonegap.com/1.0/geolocation"/>
 
 </widget>
