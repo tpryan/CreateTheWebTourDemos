@@ -12,4 +12,4 @@ requiresSVG=true;doDelayLoad=false;htFallbacks={};aLoader=[{load:"edge_includes/
 //simpleContent
 dlContent={dom:[]};
 //simpleContent
-})("EDGE-171675818");
+})("logos");

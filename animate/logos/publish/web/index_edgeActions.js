@@ -61,4 +61,4 @@ Symbol.bindElementAction(compId,symbolName,"${_rs_wf}","click",function(sym,e){s
 //Edge symbol: 'rs'
 (function(symbolName){})("rs");
 //Edge symbol end:'rs'
-})(jQuery,AdobeEdge,"EDGE-171675818");
+})(jQuery,AdobeEdge,"logos");
