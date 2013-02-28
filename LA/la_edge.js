@@ -52,32 +52,32 @@ var symbols = {
    states: {
       "Base State": {
          "${_buildings_outline}": [
-            ["style", "height", '393px'],
             ["style", "top", '0px'],
+            ["style", "height", '393px'],
             ["style", "left", '0px'],
             ["style", "width", '550px']
          ],
          "${_plane}": [
-            ["style", "height", '393px'],
             ["style", "top", '0px'],
+            ["style", "height", '393px'],
             ["style", "left", '0px'],
             ["style", "width", '550px']
          ],
          "${_trees}": [
-            ["style", "height", '393px'],
             ["style", "top", '0px'],
+            ["style", "height", '393px'],
             ["style", "left", '0px'],
             ["style", "width", '550px']
          ],
          "${_Stage}": [
             ["color", "background-color", 'rgba(255,255,255,1)'],
-            ["style", "overflow", 'hidden'],
+            ["style", "width", '550px'],
             ["style", "height", '393px'],
-            ["style", "width", '550px']
+            ["style", "overflow", 'hidden']
          ],
          "${_bg2}": [
-            ["style", "top", '0px'],
             ["style", "height", '393px'],
+            ["style", "top", '0px'],
             ["style", "left", '0px'],
             ["style", "width", '550px']
          ]
