@@ -45,14 +45,17 @@
 
     function doReverseLookupSuccess(response) {
       console.log(response);
-      for (addressItem in response.results) {
-        addressObj = response.results[addressItem];
-        console.log(addressObj);
-        if (addressObj.geometry.location_type === "APPROXIMATE") {
-          $("#address").html(addressObj.formatted_address);
-          break;
-        }
-      }
+      var addressObj = response.results[0];
+      $("#address").html(addressObj.formatted_address);
+
+      // for (addressItem in response.results) {
+      //   addressObj = response.results[addressItem];
+      //   console.log(addressObj);
+      //   if (addressObj.formatted_address) {
+          
+      //     break;
+      //   }
+      // }
 
     }
 
