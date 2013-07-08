@@ -5,36 +5,49 @@
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/bootstrap-responsive.min.css" rel="stylesheet">
     <link href="css/responsive.css" rel="stylesheet">
+    <link href="css/main.css" rel="stylesheet">
     <script src="js/jquery-1.8.2.min.js"></script>
     <script type="text/javascript" charset="utf-8" src="phonegap.js"></script>
     <script src="js/travelapp.js"></script>
 
     <script type="text/javascript">
 
+    var imageToSave;
     var pictureSource;   // picture source
     var destinationType; // sets the format of returned value
     document.addEventListener("deviceready", onDeviceReady, false);
 
     function onDeviceReady() {
-        console.log("onDeviceReady Fired");
         pictureSource=navigator.camera.PictureSourceType;
         destinationType=navigator.camera.DestinationType;
         $("#picture-btn").click(getPicture);
+        $("#save-btn").click(savePicture);
     }
 
     function onError(error) {
-      console.log(error);
+      setTimeout(function() {
+         alert(error);
+      }, 0);
+      
     }
 
     function getPicture(e){
-        console.log("getPicture Fired");
         e.preventDefault();
         navigator.camera.getPicture(onGetPictureSuccess, onError, { quality: 50, destinationType: destinationType.DATA_URL });
+    }
+    function savePicture(e){
+        e.preventDefault();
+        // navigator.camera.getPicture(onGetPictureSuccess, onError, { quality: 50, destinationType: destinationType.DATA_URL });
     } 
 
-    function onGetPictureSuccess(e){
-      console.log(e);
+    function onGetPictureSuccess(imageData){
+      imageToSave = imageData;
+      var result = document.getElementById("latest");
+      result.src = "data:image/jpeg;base64," + imageData;
+      $("#save-btn").show();
     }
+
+
     </script>
 
   </head>
@@ -59,6 +72,8 @@
       <li class="active">What's the audience look like?</li>
     </ul>
     <button id="picture-btn" class="btn btn-primary btn-large" type="submit" class="btn">Snap a picture</button>
+    <button id="save-btn" class="btn btn-primary btn-large" type="submit" class="btn">Save picture</button>
+    <img id="latest" src="splash.png" />
   </body>
  
   <script src="js/bootstrap.min.js"></script>

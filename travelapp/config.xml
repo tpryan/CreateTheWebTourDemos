@@ -34,5 +34,6 @@
     <gap:splash src="img/android/splash/ldpi.png" gap:platform="android" gap:density="ldpi" />
 
     <feature name="http://api.phonegap.com/1.0/geolocation"/>
-
+    <feature name="http://api.phonegap.com/1.0/camera"/>
+    <plugin name="Camera" value="CDVCamera" />
 </widget>

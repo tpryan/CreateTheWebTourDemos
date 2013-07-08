@@ -1,0 +1,9 @@
+#latest{
+	-webkit-transform: rotate(-30deg);
+	box-shadow: 3px 3px 5px #333;
+	border: 10px solid #FFF;
+	margin-top: 50px;
+}
+#save-btn{
+	display: none;
+}
