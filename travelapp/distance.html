@@ -33,46 +33,30 @@
     }
 
     function getLocationSuccess(position) {
-      $("#lat-device").html(position.coords.latitude);
-      $("#lon-device").html(position.coords.longitude);
+      var lat_device = position.coords.latitude;
+      var lon_device = position.coords.longitude;
+      var lat_home = $("#lat-home").html();
+      var lon_home = $("#lon-home").html()
 
-      console.log("lat1:",$("#lat-device").html());
-      console.log("lon1:",$("#lon-device").html());
-      console.log("lat2:",$("#lat-home").html());
-      console.log("lon2:",$("#lon-home").html());
+      $("#lat-device").html(lat_device);
+      $("#lon-device").html(lon_device);
 
-      var distanceKM = calcDistanceBetween($("#lat-device").html(), $("#lon-device").html(),$("#lat-home").html(), $("#lon-home").html());
+      console.log("lat_device:",lat_device);
+      console.log("lon_device:",lon_device);
+      console.log("lat_home:",lat_home);
+      console.log("lon_home:",lon_home);
+
+      var distanceKM = calcDistanceBetween(lat_device, lon_device,lat_home, lon_home);
       $("#d_km").html(Math.round(distanceKM));
 
-      var distanceMiles = calcDistanceBetween($("#lat-device").html(), $("#lon-device").html(),$("#lat-home").html(), $("#lon-home").html(), "miles");
+      var distanceMiles = calcDistanceBetween(lat_device, lon_device,lat_home, lon_home, "miles");
       $("#d_miles").html(Math.round(distanceMiles));
 
     }
 
-    function calcDistanceBetween(lat1, lon1, lat2, lon2, units) {
-      if (typeof(units) == "undefined") units = "km";
 
-      var R = 6371; // Radius of earth in km 
-      if (units == "miles"){
-        R = 3958.7558657440545; // Radius of earth in miles 
-      }
 
-      //Radius of the earth in:  3958.7558657440545 miles,  6371 km  | var R = (6371 / 1.609344);
-      
-      var dLat = toRad(lat2-lat1);
-      var dLon = toRad(lon2-lon1); 
-      var a = Math.sin(dLat/2) * Math.sin(dLat/2) +
-              Math.cos(toRad(lat1)) * Math.cos(toRad(lat2)) * 
-              Math.sin(dLon/2) * Math.sin(dLon/2); 
-      var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)); 
-      var d = R * c;
-      return d;
-  }
-
-  function toRad(Value) {
-      /** Converts numeric degrees to radians */
-      return Value * Math.PI / 180;
-  }
+  
 
     </script>
 

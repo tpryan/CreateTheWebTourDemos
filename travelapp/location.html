@@ -13,13 +13,15 @@
     document.addEventListener("deviceready", onDeviceReady, false);
 
     function onDeviceReady() {
-        getLocation();
         console.log("onDeviceReady Fired");
+        getLocation();
+        
     }
 
     function getLocation() {
-      navigator.geolocation.getCurrentPosition(getLocationSuccess,getLocationError); 
       console.log("getLocation Fired");
+      navigator.geolocation.getCurrentPosition(getLocationSuccess,getLocationError); 
+      
     }
 
     function getLocationSuccess(position) {
@@ -35,6 +37,7 @@
     }
 
     function doReverseLookup(position) {
+      console.log("doReverseLookup Fired");
       var latlon = position.coords.latitude + "," + position.coords.longitude;
 
       $.ajax({
@@ -44,19 +47,10 @@
     }
 
     function doReverseLookupSuccess(response) {
+      console.log("doReverseLookupSuccess Fired");
       console.log(response);
       var addressObj = response.results[0];
       $("#address").html(addressObj.formatted_address);
-
-      // for (addressItem in response.results) {
-      //   addressObj = response.results[addressItem];
-      //   console.log(addressObj);
-      //   if (addressObj.formatted_address) {
-          
-      //     break;
-      //   }
-      // }
-
     }
 
     </script>
