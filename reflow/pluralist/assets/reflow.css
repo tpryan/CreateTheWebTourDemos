@@ -13,7 +13,7 @@
     border-right-color: rgb(209, 204, 200);
     border-right-width: 2px;
     border-right-style: solid;
-    box-shadow: rgba(0, 0, 0, 0.199219) 0px 0px 3px 3px;
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 3px 3px;
 }
 #box1 {
     float: left;
@@ -53,7 +53,7 @@
     background-repeat: repeat repeat;
 }
 body {
-    background-image: url('img/back-pattern.png'), -webkit-linear-gradient(270deg, rgba(0, 0, 0, 0.257813) 0%, rgba(255, 255, 255, 0.480469) 49%, rgba(0, 0, 0, 0.289063) 100%);
+    background-image: url('img/back-pattern.png'), -webkit-linear-gradient(270deg, rgba(0, 0, 0, 0.258824) 0%, rgba(255, 255, 255, 0.482353) 49%, rgba(0, 0, 0, 0.290196) 100%);
     background-attachment: fixed;
     background-size: auto;
     background-position: 0% 0%;
@@ -526,7 +526,7 @@ body {
     width: 100%;
     min-height: 0px;
     background-color: rgb(255, 255, 255);
-    box-shadow: rgba(194, 194, 194, 0.808594) 0px 3px 3px 0px;
+    box-shadow: rgba(194, 194, 194, 0.811765) 0px 3px 3px 0px;
 }
 #box24 {
     float: left;
