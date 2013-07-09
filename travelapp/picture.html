@@ -24,10 +24,11 @@
     }
 
     function onError(error) {
-      setTimeout(function() {
-         alert(error);
-      }, 0);
-      
+      // setTimeout(function() {
+      //   alert("An Error occured");
+      //   alert(error.code);
+      // }, 0);
+      console.log(error.message);
     }
 
     function getPicture(e){
