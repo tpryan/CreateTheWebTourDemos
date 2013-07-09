@@ -21,7 +21,6 @@
         pictureSource=navigator.camera.PictureSourceType;
         destinationType=navigator.camera.DestinationType;
         $("#picture-btn").click(getPicture);
-        $("#save-btn").click(savePicture);
     }
 
     function onError(error) {
@@ -33,18 +32,14 @@
 
     function getPicture(e){
         e.preventDefault();
-        navigator.camera.getPicture(onGetPictureSuccess, onError, { quality: 50, destinationType: destinationType.DATA_URL });
+        navigator.device.capture.captureImage(onGetImageSuccess, onError, { quality: 50, destinationType: destinationType.DATA_URL });
     }
-    function savePicture(e){
-        e.preventDefault();
-        // navigator.camera.getPicture(onGetPictureSuccess, onError, { quality: 50, destinationType: destinationType.DATA_URL });
-    } 
 
-    function onGetPictureSuccess(imageData){
-      imageToSave = imageData;
+    function onGetImageSuccess(imageInfo){
+      var imagePath = imageInfo[0].fullPath;
       var result = document.getElementById("latest");
-      result.src = "data:image/jpeg;base64," + imageData;
-      $("#save-btn").show();
+      result.src = imagePath;
+      result.style.display="inline";
     }
 
 
@@ -71,9 +66,10 @@
       <li><a href="index.html">Main</a> <span class="divider">/</span></li>
       <li class="active">What's the audience look like?</li>
     </ul>
-    <button id="picture-btn" class="btn btn-primary btn-large" type="submit" class="btn">Snap a picture</button>
-    <button id="save-btn" class="btn btn-primary btn-large" type="submit" class="btn">Save picture</button>
-    <img id="latest" src="splash.png" />
+    <div class="container">
+      <button id="picture-btn" class="btn btn-primary btn-large" type="submit" class="btn">Snap a picture</button>
+      <img id="latest" src="" />
+    </div>
   </body>
  
   <script src="js/bootstrap.min.js"></script>

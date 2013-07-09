@@ -10,10 +10,12 @@
     <script src="js/travelapp.js"></script>
 
     <script type="text/javascript">
+    
     $(document).ready(function(){
       var location = getHomeLocation();
       reportHomeLocation(location.lat,location.lon);
       $("#saveaddress").click(computeHomeLocation);
+      $("#savethisaddress").click(setHomeLocationHere);
 
     });
 
@@ -30,6 +32,26 @@
 
 
     }
+    function setHomeLocationHere(e) {
+      e.preventDefault();
+      navigator.geolocation.getCurrentPosition(getLocationSuccess,getLocationError); 
+    }
+    
+    function getLocationSuccess(position) {
+      console.log("getLocationSuccess Fired");
+      var lat = position.coords.latitude;
+      var lon = position.coords.longitude;
+
+      setHomeLocation(lat,lon);
+      reportHomeLocation(lat,lon);
+    }
+
+    function getLocationError(error) {
+      console.log("getLocationError Fired");
+      console.log(error);
+    }
+
+
     function doLookupSuccess(e) {
         console.log(e.results[0].geometry.location);
         var lat = e.results[0].geometry.location.lat;
@@ -85,6 +107,7 @@
       <input name="zip" id="zip" type="text" placeholder="Zip Code" class="input-xlarge">
       <br />
       <button id="saveaddress" class="btn btn-primary btn-large" type="submit" class="btn">Save</button>
+      <button id="savethisaddress" class="btn btn-primary btn-large" type="submit" class="btn">I am Home</button>
     </form>
 
   </body>
