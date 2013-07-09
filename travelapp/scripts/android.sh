@@ -15,8 +15,8 @@ cd $projectPath
 
 ##Request Phonegap data
 echo "Requesting Project Data.";
-package=$(curl -s -u $creds  $APIcall | grep -Po '"package":.*?[^\\],');
-title=$(curl -s -u $creds  $APIcall | grep -Po '"title":.*?[^\\],');
+package=$(curl -s -u $creds  $APIcall | sed -e 's/^.*"package":"\([^"]*\)".*$/\1/');
+title=$(curl -s -u $creds  $APIcall | sed -e 's/^.*"title":"\([^"]*\)".*$/\1/');
 title=${title##*:};
 title=$(echo $title|sed 's/,//g');
 title=$(echo $title|sed 's/"//g');
@@ -26,16 +26,19 @@ package=$(echo $package|sed 's/,//g');
 package=$(echo $package|sed 's/"//g');
 echo "Done. ";
 
+
 echo "Waiting for rebuild to be done.";
-donecheck=$(curl -s -u $creds  $APIcall | grep -Po '"android":"complete"');	
-while [$donecheck -eq ""]
+donecheck=$(curl -s -u $creds  $APIcall | grep -c '"android":"complete"');	
+
+while [ $donecheck != 1 ]
 do
 	echo ".";
 	sleep 10;
-	donecheck=$(curl -s -u $creds  $APIcall | grep -Po '"android":"complete"');	
+	donecheck=$(curl -s -u $creds  $APIcall | grep -c '"android":"complete"');	
 	
 done
 echo "Done. Now downloading.";
+
 
 ##Download File
 download=$(curl -L -s -u $creds -o $title.apk $APIPATH/$project/android);

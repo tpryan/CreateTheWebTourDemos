@@ -33,6 +33,11 @@
     <gap:splash src="img/ios/splash/splash-768x1004.png"  gap:platform="ios" width="768"  height="1004" /><!-- iPad Portrait -->
     <gap:splash src="img/ios/splash/splash-1024x748.png"  gap:platform="ios" width="1024" height="748"  /><!-- iPad Landscape -->
 
+    <gap:splash src="img/android/splash/ldpi.png" gap:platform="android" gap:density="ldpi"  width="320" height="426" />
+    <gap:splash src="img/android/splash/mdpi.png" gap:platform="android" gap:density="mdpi"  width="320" height="470" />
+    <gap:splash src="img/android/splash/hdpi.png" gap:platform="android" gap:density="hdpi"  width="480" height="640" />
+    <gap:splash src="img/android/splash/xhdpi.png" gap:platform="android" gap:density="xhdpi" width="720" height="960" />
+
     <feature name="http://api.phonegap.com/1.0/geolocation"/>
     <feature name="http://api.phonegap.com/1.0/camera"/>
     <feature name="http://api.phonegap.com/1.0/media"/>
