@@ -43,7 +43,7 @@
 		<echo message="Polishing"/>
 		<replace dir="${build.dir}" summary="${verbose}">
 			<include name="about.html"/>
-			<replacefilter token="$$$$$$version$$$$$$" value="${build.number}"/>
+			<replacefilter token="%%%%version%%%%" value="${build.number}"/>
 		</replace>
 	</target>
 
